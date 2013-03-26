@@ -7,7 +7,6 @@
 	$hash = md5(strtolower(trim($credentials['email'])));
 	//$notifications = $database->count("notifications");
 	$comments = $database->count("comments");
-	$tickets = $database->count("tickets");
 	$messages = 0;
 	
 	// Display toolbar
@@ -47,43 +46,6 @@
 			<button type=\"submit\" class=\"tip-bottom\" title=\"Search\"><i class=\"icon-search icon-white\"></i></button>
 		</div>-->
 	</div>";
-	
-	/*<nav id=\"admin-bar\">
-		<ul>
-			<li class=\"avatar\"><a href=\"#\" style=\"background: url(http://www.gravatar.com/avatar/{$hash}?s=30)\"></a></li>
-			<li class=\"welcome\">Welcome, {$mvar['nickname']}! <a href=\"{$settings['acp_loc']}?page=logout\">logout</a></li>
-		</ul>
-		<ul class=\"controls\">
-			<li class=\"icon\"><a href=\"{$settings['acp_loc']}?page=viewer&content=comments\" title=\"Comments\">d<span class=\"priority notice\">{$comments}</span></a></li>
-			<!--<li><a href=\"#\">Notifications<span class=\"priority notice\">{$notifications}</span></a></li>-->
-			<li><a href=\"{$settings['acp_loc']}?page=viewer&content=tickets\">Tickets<span class=\"priority notice\">{$tickets}</span></a></li>
-			<li><a href=\"{$settings['acp_loc']}?page=dashboard\">Dashboard</a></li>
-			<!--<li><a href=\"#\">Profile</a></li>-->
-			<li class=\"more\"><a href=\"#\">New</a>
-				<ul>
-					<!--<li><a href=\"#\">Error Page</a></li>-->
-					<li><a href=\"{$settings['acp_loc']}?page=editor&act=form\">Form</a></li>
-					<!--<li><a href=\"{$settings['acp_loc']}?page=editor&act=gallery\">Gallery</a></li>-->
-					<!--<li><a href=\"#\">Media</a></li>-->
-					<li><a href=\"{$settings['acp_loc']}?page=editor&act=page\">Page</a></li>
-					<!--<li><a href=\"#\">Product</a></li>-->
-					<li><a href=\"{$settings['acp_loc']}?page=editor&act=news\">News Post</a></li>
-				</ul>
-			</li>
-			<!--<li><a href=\"#\">Settings</a></li>-->
-		</ul>
-		<ul class=\"controls\">
-			<li class=\"icon\"><a href=\"{$settings['website']}?page=member\" class=\"priority\" title=\"Return to Website\">X</a></li>
-		</ul>
-		<ul class=\"search\">
-			<li>
-				<form action=\"#\" method=\"post\">
-					<input type=\"search\" placeholder=\"Search...\" name=\"search\" />
-					<button>L</button>
-				</form>
-			</li>
-		</ul>
-	</nav>*/
 	
 ?>
 

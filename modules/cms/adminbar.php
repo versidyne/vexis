@@ -5,7 +5,7 @@
 	// Lookup
 	$mvar = $member->vars($member->lookup($credentials['email']));
 	$hash = md5(strtolower(trim($credentials['email'])));
-	//$notifications = $database->count("notifications");
+	$notifications = $database->count("notifications");
 	$comments = $database->count("comments");
 	
 	// Display toolbar
