@@ -1,84 +1,26 @@
 <?php
-
-	// Class Declaration
+	
+	/* This library is meant to store various portions of data
+	 * that is generated each time a page is loaded, but the
+	 * data remains the same between pages, thus it should be
+	 * a discrete value to avoid resource usage.  It will work
+	 * by generating an initial load then storing it until the
+	 * admin has changed data that the discrete value holds, in
+	 * which case it will be generated again. */
+	
 	class discrete {
 		
 		private $database = false;
 		public function __construct($database) { $this->database = $database; }
 		
-		// Display Biography Contents
-		public function contents() {
-			$result = $this->database->query("SELECT * FROM `biographies` WHERE `first`='{$first}'");
-			return "Contents will be displayed here.<br>\n";
+		// Store complete iterations
+		public function store() {
+			return false;
 		}
 		
-		// Display Biography
-		public function display($first) {
-			$result = $this->database->query("SELECT * FROM `biographies` WHERE `first`='{$first}'");
-			$row = mysql_fetch_array($result, MYSQL_ASSOC);
-			if (!$row["id"]) { $existence = array ("existence" => false); }
-			else { $existence = array ("existence" => true); }
-			return array_merge($row, $existence);
-		}
-		
-		// Display Forum Menu
-		public function menu() {
-			
-			// Gather Forums
-			$biographies = $this->database->query("SELECT * FROM `biographies`");
-			
-			// Retreive Forum
-			while($biography = mysql_fetch_array($biographies, MYSQL_ASSOC)) {
-				
-				// Set if nonexistant
-				if (!isset($list)) { $list = ""; }
-				
-				// Lookup last post
-				
-				// Lookup author info
-				
-				// Add all forums to list
-				$list .= "<tr class=\"light\">
-				<td><a href='?page=biographies&biography={$biography['first']}'>{$biography['first']}</a></td>
-				<td>&nbsp;Views: {$biography['views']}&nbsp;</td>
-				</tr>
-				
-				<tr class=\"dark\">
-				<td>{$biography['description']}</td>
-				<td>&nbsp;Rating: {$biography['rating']}&nbsp;</td>
-				</tr> \n";
-				
-			}
-			
-			// Set if nonexistant
-			if (!isset($menu)) { $menu = ""; }
-			
-			// Add full category to menu
-			$menu .= "<thead>
-				<tr>
-					<th>Name</th>
-					<th>Stats</th>
-				</tr>
-			</thead>
-			<tbody>
-				{$list}
-			</tbody>";
-			
-			// Put data into tabular format
-			$menu = "<table summary=\"Biography Menu\" cellpadding=\"0\" cellspacing=\"0\"> {$menu} </table> \n";
-			
-			// Return Menu
-			return $menu;
-		 
-		}
-		
-		// Translate Numerical Data
-		public function translate($type, $value) {
-			$result = $this->database->query("SELECT * FROM `biographies_scheme` WHERE `first`='{$first}'");
-			$row = mysql_fetch_array($result, MYSQL_ASSOC);
-			if (!$row["id"]) { $existence = array ("existence" => false); }
-			else { $existence = array ("existence" => true); }
-			return array_merge($row, $existence);
+		// Display complete iterations
+		public function store() {
+			return false;
 		}
 
 	}
