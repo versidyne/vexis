@@ -1,0 +1,8 @@
+# Robots.txt file for http://www.getvexis.com/
+#
+
+User-agent: *
+# Disallow: /private/*
+# Allow: /
+
+Sitemap: http://www.getvexis.com/sitemap.xml
