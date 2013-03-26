@@ -175,11 +175,11 @@
 		public function navbar($current_page, $reverse = false) {
 			$links = "";
 			// Find last navbutton
-			$result = $this->database->query("SELECT * FROM `content` WHERE `navbutton`>0 AND `enabled`=1 ORDER BY `navbutton` DESC LIMIT 1");
+			$result = $this->database->query("SELECT * FROM `content` WHERE `navbutton` > 0 ORDER BY `navbutton` DESC LIMIT 1");
 			while ($content = mysql_fetch_array($result, MYSQL_ASSOC)) { $last = $content["navbutton"]; }
 			mysql_free_result($result);
 			// Find all pages marked for navigation
-			if ($reverse) { $result = $this->database->query("SELECT * FROM content WHERE `navbutton` > 0 ORDER BY `navbutton` DESC"); }
+			if ($reverse) { $result = $this->database->query("SELECT * FROM content WHERE `navbutton` > 0 AND `enabled` = 1 ORDER BY `navbutton` DESC"); }
 			else { $result = $this->database->query("SELECT * FROM content WHERE `navbutton` > 0 ORDER BY `navbutton` ASC"); }
 			while ($content = mysql_fetch_array($result, MYSQL_ASSOC)) {
 				// Build navigation sub-menus
