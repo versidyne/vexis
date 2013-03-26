@@ -7,7 +7,6 @@
 	$hash = md5(strtolower(trim($credentials['email'])));
 	//$notifications = $database->count("notifications");
 	$comments = $database->count("comments");
-	$tickets = $database->count("tickets");
 	
 	// Display toolbar
 	$sundries = "class=\"logged-in\"";
@@ -18,8 +17,8 @@
 		</ul>
 		<ul class=\"controls\">
 			<li class=\"icon\"><a href=\"{$settings['acp_loc']}?page=viewer&content=comments\" title=\"Comments\">d<span class=\"priority notice\">{$comments}</span></a></li>
-			<!--<li><a href=\"#\">Notifications<span class=\"priority notice\">{$notifications}</span></a></li>-->
-			<li><a href=\"{$settings['acp_loc']}?page=viewer&content=tickets\">Tickets<span class=\"priority notice\">{$tickets}</span></a></li>
+			<li><a href=\"{$settings['acp_loc']}\">Notifications<span class=\"priority notice\">{$notifications}</span></a></li>
+			<!--<li><a href=\"{$settings['acp_loc']}\">Messages<span class=\"priority notice\">{$messages}</span></a></li>-->
 			<li><a href=\"{$settings['acp_loc']}?page=dashboard\">Dashboard</a></li>
 			<!--<li><a href=\"#\">Profile</a></li>-->
 			<li class=\"subcontrols\"><a href=\"#\">New</a>
