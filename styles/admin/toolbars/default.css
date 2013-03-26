@@ -1,0 +1,119 @@
+.toolbar {
+	/*background-color: #1f262d;*/
+	background-color: #2E363F;
+}
+#toolbar .icon {
+	background-image: none !important;
+	background-position: 0% 0%;
+}
+#toolbar {
+	height: 40px;
+	position: relative;
+	width: 100%;
+	z-index: 99999;
+	background-color: #1f262d;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 12px;
+	color: #666;
+}
+#toolbar #logo {
+	background: url("../images/toolbar.png") no-repeat scroll 0 0 transparent;
+	height: 31px;
+	left: 20px;
+	line-height: 600px;
+	overflow: hidden;
+	position: relative;
+	top: 26px;
+	width: 200px;
+	display: block;
+}
+#search {
+	position: absolute;
+	z-index: 25;
+	top: 6px;
+	right:10px;
+}
+#search input[type=text], #search button {
+	background-color: #28b779;
+}
+#search input[type=text] {
+	padding: 4px 10px 5px;
+	border: 0;
+	width: 100px;
+	background-color: #47515b;
+	color: #fff; 
+}
+#search input[type=text]:focus {
+	color: #777777;
+	color: #2e363f;
+	color: #fff;
+	box-shadow:none;
+}
+#search button {
+	border: 0;
+	margin-left:-3px; 
+	margin-top: -11px;
+	padding: 5px 10px 4px;
+}
+#search button i {
+	opacity: 0.8; color:#fff;
+}
+#search button:hover i, #search button:active i {
+	opacity: 1;
+}
+#user-nav {
+	position: absolute;
+	left: 200px;
+	top:0px;
+	z-index: 20;
+	margin: 0;
+}
+#user-nav > ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	border-right: 1px solid #2e363f;
+	border-left: 1px solid #000;
+}
+#user-nav > ul > li {
+	float: left;
+	list-style-type: none;
+	margin: 0;
+	position: relative;
+	padding: 0;
+	border-left: 1px solid #2e363f;
+	border-right: 1px solid #000;
+}
+#user-nav > ul > li > a {
+	padding:9px 10px;
+	display: block;
+	font-size: 11px;
+	color: #939da8;
+}
+#user-nav > ul > li > a:hover, #user-nav > ul > li.open > a {
+	color: #ffffff;  background:#000;
+}
+#user-nav > ul > li > a > i, #sidebar li a i {
+	opacity: .5; 
+	margin-top: 2px;
+}
+#user-nav > ul > li > a:hover > i, #user-nav > ul > li.open > a > i {
+	opacity: 1;
+}
+#user-nav > ul > li > a > .label {
+	vertical-align: middle;
+	padding: 1px 4px 1px;
+	margin: -2px 4px 0;
+	display: inline-block;
+}
+#user-nav > ul ul > li > a {
+	text-align: left;
+}
+#user-nav > ul ul > li > a:hover {
+}
+
+/* Media Block */
+.dropdown-menu li a:hover, .dropdown-menu .active a, .dropdown-menu .active a:hover {
+    color: #eeeeee;
+	background:#666;
+}

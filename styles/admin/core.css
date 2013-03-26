@@ -1,0 +1,264 @@
+/* This is meant to be a framework
+ * of what everything else in the
+ * admin panel should style on top of */
+
+/* Priorities */
+.high {
+	color: #EA5200;
+}
+.medium {
+	color: #0060BF;
+}
+.low {
+	color: #359AFF;
+}
+
+/* Sizes */
+body {
+	margin: 0px 0px 0px 0px;
+}
+.normal {
+	font-size:100%;
+}
+.minimal {
+	font-size:65%;
+}
+.menu {
+	height: 100%;
+	width: 200px;
+	z-index: 1;
+}
+.menu .shadow {
+	z-index: 3;
+}
+.menu .demo {
+	z-index: 2;
+}
+.body {
+	height: auto;
+	/*margin-left: 2px;
+	margin-right: 2px;
+	margin-bottom: 5px;*/
+}
+#header {
+	/*font-size: 100%;*/
+	font-size: 23px;
+	height: 33px;
+}
+/*.viewer .table {
+	width: 100%;
+}*/
+
+/* Icon input */
+.icon {
+    position: relative;
+}
+.icon label {
+    position: absolute;
+    left: 2px;
+    top: 2px;
+    width: 20px;
+    height: 20px;
+}
+.icon input {
+    padding: 2px 2px 2px 25px;
+}
+
+/* jQuery Fixes */
+.dialog {
+	font-size:65%;
+}
+.ui-dialog-title {
+	font-size:65%;
+}
+.ui-button-text {
+	font-size:65%;
+}
+
+/* Boxes */
+.flexbox {
+	/*margin-top: 3px;*/
+	display: -webkit-box;
+	-webkit-box-orient: horizontal;
+	display: -moz-box;
+	-moz-box-orient: horizontal;
+	display: box;
+	box-orient: horizontal;
+}
+.flexbox .menu {
+	/*margin-top: 29px;*/
+	order: 1;
+	box-flex: 1;
+}
+.flexbox .body {
+	/*margin-top: 29px;*/
+	order: 2;
+	-webkit-box-flex: 1;
+	-moz-box-flex: 1;
+	box-flex: 1;
+}
+
+/* Tables */
+/*.table {
+	display: table;
+}
+.table .header {
+	display: table-header-group;
+}
+.table .footer {
+	display: table-footer-group;
+}
+.table .caption {
+	display: table-caption;
+}
+.table .row {
+	display: table-row;
+}
+.table .row-group {
+	display: table-row-group;
+}
+.table .column {
+	display: table-column;
+}
+.table .column-group {
+	display: table-column-group;
+}
+.table .cell {
+	display: table-cell;
+	padding:5px 5px 5px 5px;
+}*/
+
+/* Bump Up */
+.bump img {
+	border: 5px solid #ccc;
+	float: left;
+	margin: 15px;
+	-webkit-transition: margin 0.5s ease-out;
+	-moz-transition: margin 0.5s ease-out;
+	-o-transition: margin 0.5s ease-out;
+}
+.bump img:hover {
+	margin-top: 2px;
+}
+
+/* Stack & Grow */
+.grow {
+	width: 300px;
+	margin: 0 auto;
+}
+.grow img {
+	height: 100px;
+	width: 300px;
+	margin: 15px 0;
+	-webkit-transition: all 1s ease;
+	-moz-transition: all 1s ease;
+	-o-transition: all 1s ease;
+}
+.grow img:hover {
+	height: 133px;
+	width: 400px;
+	margin-left: -50px;
+}
+
+/* Fade In Text */
+.fade {
+	width: 730px;
+	height: 133px;
+	line-height: 0px;
+	color: transparent;
+	font-size: 50px;
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-weight: 300; text-transform: uppercase;
+	-webkit-transition: all 0.5s ease;
+	-moz-transition: all 0.5s ease;
+	-o-transition: all 0.5s ease;
+}
+.fade:hover {
+	line-height: 133px; color: #575858;
+}
+.fade img{
+	float: left;
+	margin: 0 15px;
+}
+
+/* Crooked Photo */
+.crooked {
+	width: 800px;
+	margin: 0 auto;
+}
+.crooked img {
+	margin: 20px;
+	border: 5px solid #eee;
+	-webkit-box-shadow: 4px 4px 4px rgba(0,0,0,0.2);
+	-moz-box-shadow: 4px 4px 4px rgba(0,0,0,0.2);
+		box-shadow: 4px 4px 4px rgba(0,0,0,0.2);
+	-webkit-transition: all 0.5s ease-out;
+	-moz-transition: all 0.5s ease;
+	-o-transition: all 0.5s ease;
+}
+.crooked img:hover {
+	-webkit-transform: rotate(-7deg);
+	-moz-transform: rotate(-7deg);
+	-o-transform: rotate(-7deg);
+}
+
+/* Fade In and Reflect */
+.reflect {
+	width: 700px; margin: 0 auto;
+	min-height: 300px;
+}
+.reflect img {
+	margin: 25px; opacity: 0.8;
+	border: 10px solid #eee;
+	
+	/*Transition*/
+	-webkit-transition: all 0.5s ease;
+	-moz-transition: all 0.5s ease;
+	-o-transition: all 0.5s ease;
+	
+	/*Reflection*/
+	-webkit-box-reflect: below 0px -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(.7, transparent), to(rgba(0,0,0,0.1)));
+
+}
+.reflect img:hover {
+	opacity: 1;
+	
+	/*Reflection*/
+	-webkit-box-reflect: below 0px -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(.7, transparent), to(rgba(0,0,0,0.4)));
+	
+	/*Glow*/
+	-webkit-box-shadow: 0px 0px 20px rgba(255,255,255,0.8);
+	-moz-box-shadow: 0px 0px 20px rgba(255,255,255,0.8);
+	box-shadow: 0px 0px 20px rgba(255,255,255,0.8);
+}
+
+/* Login Box */
+.logged-out {
+	padding-top: 40px;
+	padding-bottom: 40px;
+	background-color: #f5f5f5;
+}
+.login {
+	max-width: 300px;
+	padding: 19px 29px 29px;
+	margin: 0 auto 20px;
+	background-color: #fff;
+	border: 1px solid #e5e5e5;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+		border-radius: 5px;
+	-webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+	-moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+		box-shadow: 0 1px 2px rgba(0,0,0,.05);
+}
+.login .login-heading,
+.login .checkbox {
+	margin-bottom: 10px;
+}
+.login input[type="text"],
+.login input[type="password"] {
+	font-size: 16px;
+	height: auto;
+	margin-bottom: 15px;
+	padding: 7px 9px;
+}

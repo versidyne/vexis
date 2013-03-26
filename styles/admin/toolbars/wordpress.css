@@ -1,0 +1,70 @@
+/* Core */
+
+.toolbar {
+	top: 0;
+	left: 0;
+	direction: ltr;
+	height: 28px;
+	width: 100%;
+	margin-bottom: 1px;
+	z-index: 1;
+	position: fixed;
+	text-transform: none;
+	letter-spacing: normal;
+	line-height: 1;
+	font: normal 13px/28px sans-serif;
+	color: #ccc;
+	text-shadow: #444 0 -1px 0;
+	-webkit-box-sizing: content-box;
+	-moz-box-sizing: content-box;
+	box-sizing: content-box;
+	outline: 0;
+}
+.toolbar .icon {
+	width: 20px;
+	height: 20px;
+	margin-top: 4px;
+	display: block;
+	padding: 0 12px;
+}
+.toolbar .text {
+	display: block;
+	padding: 0 12px;
+}
+.toolbar ul {
+	-webkit-margin-before: 1em;
+	-webkit-margin-after: 1em;
+	-webkit-margin-start: 0px;
+	-webkit-margin-end: 0px;
+	-webkit-padding-start: 40px;
+}
+.toolbar ul li {
+	list-style: none;
+	text-indent: 0;
+}
+.toolbar li {
+	display: list-item;
+	text-align: -webkit-match-parent;
+	float: left;
+}
+
+/* Style */
+
+.toolbar {
+	background: #464646;
+	background-image: -webkit-linear-gradient(bottom,#373737 0,#464646 5px);
+	color: #ccc;
+}
+.toolbar .logo {
+	background-image: url(images/v-modern.png);
+	/*background-position: 0 -76px;*/
+	background-repeat: no-repeat;
+}
+.toolbar .icon {
+	
+}
+.toolbar .text {
+	border-right: 1px solid #333;
+	font: normal 13px/28px sans-serif;
+	text-shadow: #444 0 -1px 0;
+}

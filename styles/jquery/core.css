@@ -1,0 +1,89 @@
+.ui-menu { position: absolute; width: 100px; z-index:1; }
+
+.demoHeaders { margin-top: 2em; }
+
+#dialog_link {padding: .4em 1em .4em 20px;text-decoration: none;position: relative;}
+#dialog_link span.ui-icon {margin: 0 5px 0 0;position: absolute;left: .2em;top: 50%;margin-top: -8px;}
+
+ul#icons {margin: 0; padding: 0;}
+ul#icons li {margin: 2px; position: relative; padding: 4px 0; cursor: pointer; float: left;  list-style: none;}
+ul#icons span.ui-icon {float: left; margin: 0 4px;}
+
+#accordion span.menu-icon { float: right; }
+#accordion span.link-icon { float: left; margin: 0 0; position: absolute; left: 10; }
+#accordion .ui-accordion-content a { text-decoration: none; }
+/*#accordion .ui-accordion-content a:hover { text-decoration: underline; }*/
+
+/*#draggable { width: 100px; height: 100px; padding: 0.5em; float: left; margin: 10px 10px 10px 0; }*/
+/*#droppable { width: 150px; height: 150px; padding: 0.5em; float: left; margin: 10px; }*/
+#draggable { padding: 0.5em; float: left; margin: 0px 0px 0px 0; }
+#droppable { padding: 0.5em; float: left; margin: 0px; }
+
+#resizable { width: 150px; height: 150px; padding: 0.5em; }
+#resizable h3 { text-align: center; margin: 0; }
+
+#feedback { font-size: 1.4em; }
+#selectable .ui-selecting { background: #FECA40; }
+/*#selectable .ui-selected { background: #F39814; color: white; }*/
+#selectable .ui-selected { background: #F39814; }
+#selectable { list-style-type: none; margin: 0; padding: 0; width: 60%; }
+#selectable li { margin: 3px; padding: 0.4em; font-size: 1.4em; height: 18px; }
+
+.sortable { list-style-type: none; margin: 0; padding: 0; width: 60%; }
+.sortable li { margin: 0 3px 3px 3px; padding: 0.4em; padding-left: 1.5em; font-size: 1.4em; height: 18px; }
+.sortable li span { position: absolute; margin-left: -1.3em; }
+
+.table { display: table; }
+.table .header { display: table-header-group; }
+.table .footer { display: table-footer-group; }
+.table .caption { display: table-caption; }
+.table .row { display: table-row; }
+.table .row-group { display: table-row-group; }
+.table .column { display: table-column; }
+.table .column-group { display: table-column-group; }
+.table .cell { display: table-cell; padding:5px 5px 5px 5px; }
+
+/* Arrowed Tooltip */
+.ui-tooltip {
+	background: #666;
+	color: white;
+	border: none;
+	padding: 0;
+	opacity: 1;
+}
+.ui-tooltip-content {
+	position: relative;
+	padding: 1em;
+	/*font-size: 80%;*/
+}
+.ui-tooltip-content:after {
+	content: '';
+	position: absolute;
+	border-style: solid;
+	display: block;
+	width: 0;
+}
+.right .ui-tooltip-content::after {
+	top: 18px;
+	left: -20px;
+	border-color: transparent #666;
+	border-width: 10px 10px 10px 0;
+}
+.left .ui-tooltip-content::after {
+	top: 18px;
+	right: -20px;
+	border-color: transparent #666;
+	border-width: 10px 0 10px 10px;
+}
+.top .ui-tooltip-content::after {
+	bottom: -20px;
+	left: 72px;
+	border-color: #666 transparent;
+	border-width: 10px 10px 0;
+}
+.bottom .ui-tooltip-content::after {
+	top: -20px;
+	left: 72px;
+	border-color: #666 transparent;
+	border-width: 0 10px 10px;
+}
