@@ -622,7 +622,7 @@ INSERT INTO `settings` (`id`, `variable`, `value`, `description`, `type`, `categ
 (10, 'emulation_location', 'https://www.vbulletin.com/forum/forum.php', 'Emulation Location', 'text', 1),
 (11, 'favicon', 'v-modern.ico', 'Favicon', 'skin', 3),
 (12, 'footer', 'Copyright &copy; 2009-2013 by <a href="http://www.versidyne.com/">Versidyne Labs</a>, All Rights Reserved.', 'Footer', 'html', 1),
-(13, 'google_analytics', 'UA-37213453-7', 'Google Analytics', 'text', 1),
+(13, 'google_analytics', 'UA-37213453-8', 'Google Analytics', 'text', 1),
 (14, 'https_prefix', 'false', 'HTTPS Prefix', 'boolean', 1),
 (15, 'http_auth', 'false', 'HTTP Authentication', 'boolean', 1),
 (16, 'jquery_skin', 'ui-darkness', 'jQuery Site', 'skin', 3),
