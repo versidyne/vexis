@@ -3,4 +3,5 @@ Vexis - Demonstration
 
 #####Live Demo
 
-http://osp.getvexis.com/
+Website: http://osp.getvexis.com/
+Admin Panel: http://admin.osp.getvexis.com/
