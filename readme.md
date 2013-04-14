@@ -10,6 +10,7 @@ This is the complete core of Vexis.  This can be utilized to set up nodes, websi
 
 #####Demonstration
 Website: http://demo.getvexis.com/
+
 Admin Panel: http://admin.demo.getvexis.com/
 
 Installation
