@@ -8,6 +8,10 @@ This is the complete core of Vexis.  This can be utilized to set up nodes, websi
 
 * Maintain several different "gateways" that will provide different types of functionality for various domains, subdomains, and virtual subdirectories.
 
+#####Demonstration
+Website: http://demo.getvexis.com/
+Admin Panel: http://admin.demo.getvexis.com/
+
 Installation
 =====
 #####Overview
