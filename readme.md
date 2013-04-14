@@ -34,15 +34,13 @@ System Roles
 The roles that follow are separated within a directory specific to its name.  Within these directories, each role will have its format and place in the order of the system as it runs.  The role will dictate where a particular feature will need to go and from there we can maintain quite a vast sense of universal ability.
 
 #####Extensions
-Extensions will involve a top level action enabled across the board for all pages.
-
+Extensions will involve a top level action enabled across the board for all pages.  
 ```php
 //Sample Format
 
 //object oriented class style information here
 echo "Hello World!";
-```
-
+```  
 #####Gateways
 Only one gateway can run and is set by the children block in the database.
 
