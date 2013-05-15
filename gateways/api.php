@@ -81,7 +81,7 @@
 				elseif ($_GET['info'] == "channels") {
 					$output = "{$row}{$cell}Main{$cell}public";
 					$output .= "{$row}{$cell}Programming{$cell}private";
-					$output .= "{$row}{$cell}>Personal{$cell}public";
+					$output .= "{$row}{$cell}Personal{$cell}public";
 				}
 			}
 			
