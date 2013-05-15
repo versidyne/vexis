@@ -44,18 +44,31 @@
 			
 			// common functions
 			if ($_GET['info']) {
-				if ($_GET['info'] == "contacts") {
-					$output = "{$row}{$cell}User 1{$cell}online";
-					$output .= "{$row}{$cell}User 2{$cell}offline";
-					$output .= "{$row}{$cell}User 3{$cell}online";
+				if ($_GET['info'] == "associates") {
+					$output = 0;
+					$mvar = $member->vars($member->lookup($credentials['email']));
+					$associates = explode(",", $mvar["associates"]); 
+					reset($associates);
+					foreach($associates as $associate) {
+						$avar = $member->vars($associate);
+						$output .= "{$row}{$cell}{$avar["nickname"]}{$cell}online";
+					}
 				}
-				elseif ($_GET['info'] == "encpass") { $output = "IneEedDBetteERSECUurity!@##$%!()"; }
+				if ($_GET['info'] == "contacts") {
+					$output = 0;
+					$mvar = $member->vars($member->lookup($credentials['email']));
+					$contacts = mysql_fetch_array($database->query("SELECT * FROM `contacts` WHERE `author` = '{$mvar["id"]}' ORDER BY `first` DESC"), MYSQL_ASSOC);
+					while ($contact = mysql_fetch_array($contacts, MYSQL_ASSOC)) {
+						$output .= "{$row}{$cell}{$contact["first"]} {$contact["last"]}";
+					}
+				}
+				elseif ($_GET['info'] == "encpass") { $output = "eebfa3522eca50a4fdb87cd5611330b0"; }
 				elseif ($_GET['info'] == "profile") {
 					$mvar = $member->vars($member->lookup($credentials['email']));
-					$output = "{$cell}" + $mvar["group"] + "{$cell}" + $mvar["nickname"] + "{$cell}";
+					$output = "{$cell}{$mvar["group"]}{$cell}{$mvar["nickname"]}{$cell}";
 				}
 				elseif ($_GET['info'] == "serverlocation") {
-					$ip = "12.227.124.171";
+					$ip = "12.227.121.68";
 					$port = "7900";
 					$output = $ip.":".$port;
 				}
