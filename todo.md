@@ -13,6 +13,9 @@ Developer
 
 Designer
 
+#####Remote Nodes
+The core needs to be able to synchronize changes to itself and push them to the main server.  If each website can have unlimited subordinates and one upload, then the network can create a hierarchy tree to disseminate, synchronize, and update codes efficiently.  This can also be utilized to create a network tree that is based on regions.
+
 #####Marketplace
 Plugins
 * This will allow a plugin to be downloaded and installed into the system easily, without the usage of ftp or anything of the sort.
