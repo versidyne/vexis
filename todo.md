@@ -13,6 +13,9 @@ Developer
 
 Designer
 
+#####Widgets
+These will connect through plugins, added into the widget cloud.  Each widget will have its set of functionality, through a class structure, run by the plugin.  This is essentially the "display" portion of the plugin's output.  It can be anchored to various spots in the system (i.e. post bottom, header, toolbar, etc).
+
 #####Remote Nodes
 The core needs to be able to synchronize changes to itself and push them to the main server.  If each website can have unlimited subordinates and one upload, then the network can create a hierarchy tree to disseminate, synchronize, and update codes efficiently.  This can also be utilized to create a network tree that is based on regions.
 
