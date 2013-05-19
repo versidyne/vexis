@@ -14,6 +14,7 @@
 	
 	// General Security
 	$config['security']['key'] = "thiswillkeepmyfilessafe";
+	$config['security']['install'] = "thiswillunlocktheinstaller";
 	
 	// General Defaults
 	$config['defaults']['gateway'] = "cms";
