@@ -1,4 +1,4 @@
-Vexis - Universal Content Management System
+[Vexis](http://getvexis.com/) - Universal Content Management System
 =====
 #####Overview
 This is the complete core of Vexis.  This can be utilized to set up nodes, websites, and anything else one's heart can desire.
@@ -18,12 +18,23 @@ Installation
 This is a simple process and will remain as such if instructions are followed carefully.
 
 #####Configuration
-Copy the config.sample.php file and name the copy to config.php for the system to recognize it.  Then, open this file (which is fairly straight forward) and replace the sample data with the data from your server.
+Copy the config.sample.php file to config.php, open the file (which is fairly straight forward), and replace the sample data with the data from your server.
 
 #####Database
-Simply import the SQL file from the install folder directly in phpMyAdmin.  This will set up your initial database.  You should then visit the Settings table and change the various settings specifically for your domain and server information to avoid future issues when logging in for the first time.
+Import the SQL file from the install folder directly into phpMyAdmin or using a shell prompt.  The shell prompt should look like this:
 
-Note: This will eventually all be done with an installation file in php, which will make this process much easier.
+```sh
+mysql -u root -p[root_password]
+
+mysql> create database [database_name];
+Query OK, 1 row affected (0.02 sec)
+
+mysql -u root -p[root_password] [database_name] < database.sql
+```
+
+If this was done correctly you should be able to have a nice output from your website.  You should then visit the "Settings" table and change the various settings specifically for your domain and server information to avoid future issues when logging in for the first time.
+
+**Note**: This installation process will soon be completely done from an installation file.
 
 #####Finalizing
 Since everything should be smoothly configured, delete the install folder.  This will keep your system from having your settings overwritten which is a large security vulnerability.
