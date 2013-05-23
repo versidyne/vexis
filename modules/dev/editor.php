@@ -5,7 +5,7 @@
 	// default variables
 	$act = $_GET['act'];
 	$continue = false;
-	$header = "Content Editor";
+	$header = "File Editor";
 	$mvar = $member->vars($member->lookup($credentials['email']));
 	$timestamp = time();
 	$safe = array("&apos;");
