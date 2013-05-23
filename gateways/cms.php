@@ -1,6 +1,6 @@
 <?php
 	
-	// Layout detection
+	// Layout detection, through size and platform
 	//$layout = "mobile";
 	//$layout = "tablet";
 	
