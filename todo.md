@@ -8,6 +8,32 @@ Universal Routing Protocol
 * Applications: Universal
 * Gateway: API
 
+```js
+{
+    "version": 2.0,
+	"routing": "username, ip, group, or channel",
+    "to": "recipient",
+    "from": "sender",
+    "payload": {
+        "type": "message",
+		"format": "text",
+        "data": "Hello World!"
+    },
+    "payloads": [
+        {
+            "type": "contact",
+			"format": "vcard",
+            "data": "Alex"
+        },
+        {
+            "type": "contact",
+			"format": "vcard",
+            "data": "Hilary"
+        }
+    ]
+}
+```
+
 XML
 * ATOM
 * RSS
