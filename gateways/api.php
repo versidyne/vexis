@@ -6,6 +6,10 @@
 	$row = "<|(row)|>";
 	$cell = "<|(cell)|>";
 	
+	// hash generator
+	$seed = 'JvKnrQWPsThuJteNQAuH';
+	$hash = sha1(uniqid($seed . mt_rand(), true));
+	
 	if ($_GET['session']) {
 		$member = new member($database);
 		$device = new device($database);
