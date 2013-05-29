@@ -14,7 +14,7 @@
 		} else {
 			$form_message = "I do not understand your statement.";
 		}
-		$form_message += "<br><br>";
+		$form_message .= "<br><br>";
 	}
 	
 	
