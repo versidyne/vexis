@@ -43,6 +43,8 @@ These will connect through plugins, added into the widget cloud.  Each widget wi
 
 #####Remote Nodes
 The core needs to be able to synchronize changes to itself and push them to the main server.  If each website can have unlimited subordinates and one upload, then the network can create a hierarchy tree to disseminate, synchronize, and update codes efficiently.  This can also be utilized to create a network tree that is based on regions.
+* I can also use a plugin system to allow a server application to switch between protocols or features
+* Server applications should also be able to be controlled through the website using a console or something of the sort
 
 #####Marketplace
 Plugins
