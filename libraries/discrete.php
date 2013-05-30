@@ -1,7 +1,7 @@
 <?php
 	
 	/* This library is meant to store various portions of data
-	 * that is generated each time a page is loaded, but the
+	 * that are generated each time a page is loaded, but the
 	 * data remains the same between pages, thus it should be
 	 * a discrete value to avoid resource usage.  It will work
 	 * by generating an initial load then storing it until the
@@ -13,16 +13,14 @@
 		private $database = false;
 		public function __construct($database) { $this->database = $database; }
 		
-		// Store complete iterations
-		public function store() {
+		public function get() {
 			return false;
 		}
 		
-		// Display complete iterations
-		public function store() {
+		public function set() {
 			return false;
 		}
-
+		
 	}
 	
 ?>
