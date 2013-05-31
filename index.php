@@ -91,8 +91,7 @@
 		
 		// Create skin tags and values
 		$tags = array(
-			"{title}" => $title,
-			"{headers}" => $skin->headers,
+			"{headers}" => $skin->headers(),
 			"{clock}" => $skin->clock($settings),
 			"{links}" => $skin->links($settings, $page),
 			"{link-login}" => $skin->linklogin($settings, $page),
@@ -109,6 +108,7 @@
 			"{sponsors}" => $skin->sponsors($settings),
 			"{donations}" => $settings['donations'],
 			"{content}" => $skin->content($header, $body, $raw),
+			"{title}" => $title,
 			"{header}" => $header,
 			"{body}" => $body,
 			"{adminbar}" => $adminbar,
