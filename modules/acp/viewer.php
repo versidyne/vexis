@@ -281,8 +281,6 @@
 		$body .= "<thead>
 			<th>Variable</th>
 			<th>Value</th>
-			<th>Type</th>
-			<th>Category</th>
 		</thead>
 		<tbody>";
 		while ($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
@@ -299,6 +297,8 @@
 			if ($row['value'] != NULL) { $body .= "{$row['value']}";
 			} else { $body .= "Unknown"; }
 			$body .= "</td>
+			</tr>";
+			/*$body .= "</td>
 			<td>";
 			// Type Column
 			if ($row['type'] != NULL) { $body .= "{$row['type']}";
@@ -309,7 +309,7 @@
 			if ($row['category'] != NULL) { $body .= "{$row['category']}";
 			} else { $body .= "Unknown"; }
 			$body .= "</td>
-			</tr>";
+			</tr>";*/
 		}
 		$body .= "</tbody>";
 	} else {
