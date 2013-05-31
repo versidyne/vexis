@@ -163,9 +163,9 @@
 		$page_name = $body;
 	}
 	else {
-		if (isset($layout) == false) { $layout = "default"; }
-		$page_name = "skins/{$settings['skin']}/layouts/{$layout}.html";
-		if (file_exists($page_name) == false) { $page_name = "skins/{$settings['skin']}/layouts/default.html"; }
+		if (isset($layout) == false) { $layout = "index"; }
+		$page_name = "skins/{$settings['skin']}/{$layout}.html";
+		if (file_exists($page_name) == false) { $page_name = "skins/{$settings['skin']}/index.html"; }
 	}
 	
 	// Set Data for Navbar
