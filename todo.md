@@ -38,6 +38,9 @@ XML
 * ATOM
 * RSS
 
+#####Admin Bar
+This will need a setting to enable and disable it, possibly also customize it in the same variable.  Empty variable can disable.
+
 #####Widgets
 These will connect through plugins, added into the widget cloud.  Each widget will have its set of functionality, through a class structure, run by the plugin.  This is essentially the "display" portion of the plugin's output.  It can be anchored to various spots in the system (i.e. post bottom, header, toolbar, etc).
 
