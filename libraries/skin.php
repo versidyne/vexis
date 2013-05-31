@@ -101,11 +101,11 @@
 				//if ($content["featured"] == $last) { $pages .= "<li class=\"last\"><h2>{$content["title"]}</h2> \n <p class=\"imgholder\"><img src=\"skins/modern-business/images/demo/290x100.gif\" alt=\"\" /></p> \n <p>{$content["description"]} <a href=\"?page={$content["shortname"]}\">More &raquo;</a></p></li> \n"; }
 				//else { $pages .= "<li><h2>{$content["title"]}</h2> \n <p class=\"imgholder\"><img src=\"skins/modern-business/images/demo/290x100.gif\" alt=\"\" /></p> \n <p>{$content["description"]} <a href=\"?page={$content["shortname"]}\">More &raquo;</a></p></li> \n"; }
 				if ($content["featured"] == $last) {
-					$tags = array("<class>"=>"last","<title>"=>$content["title"],"<description>"=>$content["description"],"<shortname>"=>$content["shortname"]);
+					$tags = array("{class}"=>"last","{title}"=>$content["title"],"{description}"=>$content["description"],"{shortname}"=>$content["shortname"]);
 					$pages .= $this->parse($tags, "", $this->custom['featured']);
 				}
 				else {
-					$tags = array("<class>"=>"","<title>"=>$content["title"],"<description>"=>$content["description"],"<shortname>"=>$content["shortname"]);
+					$tags = array("{class}"=>"","{title}"=>$content["title"],"{description}"=>$content["description"],"{shortname}"=>$content["shortname"]);
 					$pages .= $this->parse($tags, "", $this->custom['featured']);
 				}
 			}
@@ -187,7 +187,7 @@
 				if (mysql_num_rows($subresult) > 0) {
 					$navsub = "<ul>";
 					while ($subcontent = mysql_fetch_array($subresult, MYSQL_ASSOC)) {
-						$tags = array("<class>"=>"","<title>"=>$subcontent["title"],"<description>"=>$subcontent["description"],"<shortname>"=>$subcontent["shortname"],"<navsub>"=>"");
+						$tags = array("{class}"=>"","{title}"=>$subcontent["title"],"{description}"=>$subcontent["description"],"{shortname}"=>$subcontent["shortname"],"{navsub}"=>"");
 						$navsub .= $this->parse($tags, "", $this->custom['subnav']);
 						$navsub .= "\n";
 					}
@@ -197,33 +197,33 @@
 				// Use header if title doesn't exist
 				if ($content["title"] == ""  && $content["header"] != "") {
 					if ($content["shortname"] == $current_page) {
-						$tags = array("<class>"=>"active","<title>"=>$content["header"],"<description>"=>$content["description"],"<shortname>"=>$content["shortname"],"<navsub>"=>$navsub);
+						$tags = array("{class}"=>"active","{title}"=>$content["header"],"{description}"=>$content["description"],"{shortname}"=>$content["shortname"],"{navsub}"=>$navsub);
 						$links .= $this->parse($tags, "", $this->custom['navbar']);
 					}
 					else {
-						$tags = array("<class>"=>"","<title>"=>$content["header"],"<description>"=>$content["description"],"<shortname>"=>$content["shortname"],"<navsub>"=>$navsub);
+						$tags = array("{class}"=>"","{title}"=>$content["header"],"{description}"=>$content["description"],"{shortname}"=>$content["shortname"],"{navsub}"=>$navsub);
 						$links .= $this->parse($tags, "", $this->custom['navbar']);
 					}
 				}
 				// Last page
 				elseif ($content["navbutton"] == $last) {
 					if ($content["shortname"] == $current_page) {
-						$tags = array("<class>"=>"active last","<title>"=>$content["title"],"<description>"=>$content["description"],"<shortname>"=>$content["shortname"],"<navsub>"=>$navsub);
+						$tags = array("{class}"=>"active last","{title}"=>$content["title"],"{description}"=>$content["description"],"{shortname}"=>$content["shortname"],"{navsub}"=>$navsub);
 						$links .= $this->parse($tags, "", $this->custom['navbar']);
 					}
 					else {
-						$tags = array("<class>"=>"last","<title>"=>$content["title"],"<description>"=>$content["description"],"<shortname>"=>$content["shortname"],"<navsub>"=>$navsub);
+						$tags = array("{class}"=>"last","{title}"=>$content["title"],"{description}"=>$content["description"],"{shortname}"=>$content["shortname"],"{navsub}"=>$navsub);
 						$links .= $this->parse($tags, "", $this->custom['navbar']);
 					}
 				}
 				// Normal pages
 				else {
 					if ($content["shortname"] == $current_page) {
-						$tags = array("<class>"=>"active","<title>"=>$content["title"],"<description>"=>$content["description"],"<shortname>"=>$content["shortname"],"<navsub>"=>$navsub);
+						$tags = array("{class}"=>"active","{title}"=>$content["title"],"{description}"=>$content["description"],"{shortname}"=>$content["shortname"],"{navsub}"=>$navsub);
 						$links .= $this->parse($tags, "", $this->custom['navbar']);
 					}
 					else {
-						$tags = array("<class>"=>"","<title>"=>$content["title"],"<description>"=>$content["description"],"<shortname>"=>$content["shortname"],"<navsub>"=>$navsub);
+						$tags = array("{class}"=>"","{title}"=>$content["title"],"{description}"=>$content["description"],"{shortname}"=>$content["shortname"],"{navsub}"=>$navsub);
 						$links .= $this->parse($tags, "", $this->custom['navbar']);
 					}
 				}
