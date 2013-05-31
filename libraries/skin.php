@@ -185,46 +185,48 @@
 				// Build navigation sub-menus
 				$subresult = $this->database->query("SELECT * FROM content WHERE `navparent` = '{$content["navbutton"]}' AND `enabled` = 1 ORDER BY `navsub` ASC");
 				if (mysql_num_rows($subresult) > 0) {
-					$navsub = "<ul>";
 					while ($subcontent = mysql_fetch_array($subresult, MYSQL_ASSOC)) {
-						$tags = array("{class}"=>"","{title}"=>$subcontent["title"],"{description}"=>$subcontent["description"],"{shortname}"=>$subcontent["shortname"],"{navsub}"=>"");
-						$navsub .= $this->parse($tags, "", $this->custom['subnav']);
+						$tags = array("{class}"=>"","{title}"=>$subcontent["title"],"{description}"=>$subcontent["description"],"{shortname}"=>$subcontent["shortname"]);
+						$navsub .= $this->parse($tags, "", $this->custom['navbar']);
 						$navsub .= "\n";
 					}
-					$navsub .= "</ul>";
+					$template = $this->custom['subnav'];
 				}
-				else { $navsub = NULL; }
+				else {
+					$navsub = NULL;
+					$template = $this->custom['navbar'];
+				}
 				// Use header if title doesn't exist
 				if ($content["title"] == ""  && $content["header"] != "") {
 					if ($content["shortname"] == $current_page) {
 						$tags = array("{class}"=>"active","{title}"=>$content["header"],"{description}"=>$content["description"],"{shortname}"=>$content["shortname"],"{navsub}"=>$navsub);
-						$links .= $this->parse($tags, "", $this->custom['navbar']);
+						$links .= $this->parse($tags, "", $template);
 					}
 					else {
 						$tags = array("{class}"=>"","{title}"=>$content["header"],"{description}"=>$content["description"],"{shortname}"=>$content["shortname"],"{navsub}"=>$navsub);
-						$links .= $this->parse($tags, "", $this->custom['navbar']);
+						$links .= $this->parse($tags, "", $template);
 					}
 				}
 				// Last page
 				elseif ($content["navbutton"] == $last) {
 					if ($content["shortname"] == $current_page) {
 						$tags = array("{class}"=>"active last","{title}"=>$content["title"],"{description}"=>$content["description"],"{shortname}"=>$content["shortname"],"{navsub}"=>$navsub);
-						$links .= $this->parse($tags, "", $this->custom['navbar']);
+						$links .= $this->parse($tags, "", $template);
 					}
 					else {
 						$tags = array("{class}"=>"last","{title}"=>$content["title"],"{description}"=>$content["description"],"{shortname}"=>$content["shortname"],"{navsub}"=>$navsub);
-						$links .= $this->parse($tags, "", $this->custom['navbar']);
+						$links .= $this->parse($tags, "", $template);
 					}
 				}
 				// Normal pages
 				else {
 					if ($content["shortname"] == $current_page) {
 						$tags = array("{class}"=>"active","{title}"=>$content["title"],"{description}"=>$content["description"],"{shortname}"=>$content["shortname"],"{navsub}"=>$navsub);
-						$links .= $this->parse($tags, "", $this->custom['navbar']);
+						$links .= $this->parse($tags, "", $template);
 					}
 					else {
 						$tags = array("{class}"=>"","{title}"=>$content["title"],"{description}"=>$content["description"],"{shortname}"=>$content["shortname"],"{navsub}"=>$navsub);
-						$links .= $this->parse($tags, "", $this->custom['navbar']);
+						$links .= $this->parse($tags, "", $template);
 					}
 				}
 				$links .= "\n";
