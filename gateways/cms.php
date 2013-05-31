@@ -172,6 +172,6 @@
 	if (isset($custom_name)) {$page = $custom_name;}
 	
 	// Inject sitebar
-	if ($member->permissions($member->lookup($credentials["email"]), "allowed", "admin") && $_GET['page'] != "logout") { include "modules/cms/adminbar.php"; }
+	if ($settings['admin_bar'] == "true" && $member->permissions($member->lookup($credentials["email"]), "allowed", "admin") && $_GET['page'] != "logout") { include "modules/cms/adminbar.php"; }
 	
 ?>
