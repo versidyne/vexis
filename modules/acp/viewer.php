@@ -281,7 +281,6 @@
 		$body .= "<thead>
 			<th>Variable</th>
 			<th>Value</th>
-			<th>Description</th>
 			<th>Type</th>
 			<th>Category</th>
 		</thead>
@@ -290,17 +289,14 @@
 			$body .= "<tr>
 			<td class=\"{$row['priority']}\">";
 			// Variable Column
-			if ($row['variable'] != NULL) { $body .= "<a href=\"{$settings['acp_loc']}?page=editor&act=settings&variable={$row['variable']}\">{$row['variable']}</a>";
+			if ($row['variable'] != NULL) {
+				if ($row['description'] != NULL) { $body .= "<a href=\"{$settings['acp_loc']}?page=editor&act=settings&variable={$row['variable']}\">{$row['description']}</a>";
+				} else { $body .= "<a href=\"{$settings['acp_loc']}?page=editor&act=settings&variable={$row['variable']}\">{$row['variable']}</a>"; }
 			} else { $body .= "Unknown"; }
 			$body .= "</td>
 			<td>";
 			// Value Column
 			if ($row['value'] != NULL) { $body .= "{$row['value']}";
-			} else { $body .= "Unknown"; }
-			$body .= "</td>
-			<td>";
-			// Description Column
-			if ($row['description'] != NULL) { $body .= "{$row['description']}";
 			} else { $body .= "Unknown"; }
 			$body .= "</td>
 			<td>";
