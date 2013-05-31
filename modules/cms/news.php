@@ -13,7 +13,7 @@
 			$feed = new markup("xml");
 			
 			// Create Feed Page
-			$rss_title = "{$settings['company']} - News";
+			$rss_title = "{$settings['brand']} - News";
 			$rss_link = "{$settings['website']}?page=news&amp;output=rss";
 			$news_link = "{$settings['website']}?page=news";
 			$rss_description = "News related to our company and its assets.";

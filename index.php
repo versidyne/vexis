@@ -118,7 +118,7 @@
 			"{skin}" => $settings['skin'],
 			"{favicon}" => $settings['favicon'],
 			"{jqueryskin}" => $settings['jquery_skin'],
-			"{company}" => $settings['company'],
+			"{brand}" => $settings['brand'],
 			"{slogan}" => $settings['slogan'],
 			"{copyright}" => $settings['copyright'],
 			"{domain}" => $settings['domain'],

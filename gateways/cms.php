@@ -71,11 +71,11 @@
 				// Build error messages
 				elseif ($content['type'] == 'error') {
 					// Notify Administration
-					$subject = "Error report for {$settings['company']}";
+					$subject = "Error report for {$settings['brand']}";
 					$to = "{$settings['admin_email']}";
 					$headers = 'From: noreply@versidyne.com\r\nReply-To: noreply@versidyne.com\r\nX-Mailer: PHP/'.phpversion();
 					// replace _GETs
-					$message = "On {$settings['current_date']} at {$settings['current_time']}, an error occurred on the {$settings['company']} website. \n\nThe incident report is as follows. \n\nError: {$_GET['error']} \n\nIp: {$_GET['ip']} \nReferer: {$_GET['referer']} \nUrl: {$settings['url']} \n\nThis is a notification to ensure the best quality experience. \n\nIf you need help with this error, please speak with our support team at: http://www.versidyne.com/ \n\nSincerely, \nVersidyne LLC";
+					$message = "On {$settings['current_date']} at {$settings['current_time']}, an error occurred on the {$settings['brand']} website. \n\nThe incident report is as follows. \n\nError: {$_GET['error']} \n\nIp: {$_GET['ip']} \nReferer: {$_GET['referer']} \nUrl: {$settings['url']} \n\nThis is a notification to ensure the best quality experience. \n\nIf you need help with this error, please speak with our support team at: http://www.versidyne.com/ \n\nSincerely, \nVersidyne LLC";
 					// Send Email
 					$success = mail ($to, $subject, $message, $headers);
 					//if (!$success) { echo "Email failed."; }
@@ -125,14 +125,14 @@
 	}
 	
 	// Evaluate Title
-	if (isset($custom_title)) { $title = $settings['company']." - ".$custom_title; }
-	elseif (isset($content['title']) && $content['title'] != NULL) { $title = $settings['company']." - ".$content['title']; }
-	else { $title = $settings['company']; }
+	if (isset($custom_title)) { $title = $settings['brand']." - ".$custom_title; }
+	elseif (isset($content['title']) && $content['title'] != NULL) { $title = $settings['brand']." - ".$content['title']; }
+	else { $title = $settings['brand']; }
 	
 	// Evaluate Header
 	if (isset($custom_header)) { $header = $custom_header; }
 	elseif (isset($content['header']) && $content['header'] != NULL) { $header = $content['header']; }
-	else { $header = $settings['company']; }
+	else { $header = $settings['brand']; }
 	
 	// Evaluate Body
 	if (isset($custom_body)) { $body = $custom_body; }
