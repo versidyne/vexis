@@ -93,3 +93,25 @@
 	/*background-color: #28b779;*/
 	color: #fff;
 }
+
+#sidebar  .content {
+    padding:10px;
+    position: relative; color:#939DA8;
+}
+#sidebar .percent {
+    font-weight: 700;
+    position: absolute;
+    right: 10px;
+    top:25px;
+}
+#sidebar .progress {
+    margin-bottom: 2px;
+    margin-top: 2px;
+    width: 70%;
+}
+#sidebar .progress-mini {
+    height: 6px;
+}
+#sidebar .stat {
+    font-size: 11px;
+}
