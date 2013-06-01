@@ -120,10 +120,13 @@
 	 * <a href=\"#\" id=\"help-8\" class=\"menu-link\">
 	 * <span class=\"menu-icon ui-icon ui-icon-info\" title=\"Click for more info\"></span></a> */
 	
+	$data = new data();
 	$script_loc = dirname(dirname($_SERVER['SCRIPT_FILENAME'])) . '/';
 	$disk_total = disk_total_space($script_loc);
 	$disk_free = disk_free_space($script_loc);
-	$disk_usage = ($disk_total / $disk_free);
+	$disk_usage = ($disk_free / $disk_total);
+	$disk_total = $data->sizeunits($disk_total);
+	$disk_free = $data->sizeunits($disk_free);
 	
 	// Progress Bars
 	$menu .= "<li class=\"content\"> <span>Disk Space</span>
