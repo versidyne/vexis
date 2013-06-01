@@ -120,13 +120,18 @@
 	 * <a href=\"#\" id=\"help-8\" class=\"menu-link\">
 	 * <span class=\"menu-icon ui-icon ui-icon-info\" title=\"Click for more info\"></span></a> */
 	
+	$script_loc = dirname(dirname($_SERVER['SCRIPT_FILENAME'])) . '/';
+	$disk_total = disk_total_space($script_loc);
+	$disk_free = disk_free_space($script_loc);
+	$disk_usage = ($disk_total / $disk_free);
+	
 	// Progress Bars
-	$menu .= "<li class=\"content\"> <span>Progress Bar Test</span>
+	$menu .= "<li class=\"content\"> <span>Disk Space</span>
       <div class=\"progress progress-mini progress-danger active progress-striped\">
-        <div style=\"width: 90%;\" class=\"bar\"></div>
+        <div style=\"width: {$disk_usage}%;\" class=\"bar\"></div>
       </div>
-      <span class=\"percent\">90%</span>
-      <div class=\"stat\">9000.00 / 10000 MB</div>
+      <span class=\"percent\">{$disk_usage}%</span>
+      <div class=\"stat\">{$disk_free} / {$disk_total}</div>
     </li>
     <li class=\"content\"> <span>Progress Bar Test</span>
       <div class=\"progress progress-mini active progress-striped\">
