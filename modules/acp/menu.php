@@ -124,9 +124,10 @@
 	$script_loc = dirname(dirname($_SERVER['SCRIPT_FILENAME'])) . '/';
 	$disk_total = disk_total_space($script_loc);
 	$disk_free = disk_free_space($script_loc);
-	$disk_usage = ($disk_free / $disk_total);
+	$disk_used = $disk_total - $disk_free;
+	$disk_usage = (int) (($disk_used / $disk_total) * 100);
 	$disk_total = $data->sizeunits($disk_total);
-	$disk_free = $data->sizeunits($disk_free);
+	$disk_used = $data->sizeunits($disk_used);
 	
 	// Progress Bars
 	$menu .= "<li class=\"content\"> <span>Disk Space</span>
@@ -134,7 +135,7 @@
         <div style=\"width: {$disk_usage}%;\" class=\"bar\"></div>
       </div>
       <span class=\"percent\">{$disk_usage}%</span>
-      <div class=\"stat\">{$disk_free} / {$disk_total}</div>
+      <div class=\"stat\">{$disk_used} / {$disk_total}</div>
     </li>
     <li class=\"content\"> <span>Progress Bar Test</span>
       <div class=\"progress progress-mini active progress-striped\">
