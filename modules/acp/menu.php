@@ -80,21 +80,6 @@
 		</ul>
 	</li>";
 	
-	$menu .= "<li class=\"content\"> <span>Progress Bar Test</span>
-      <div class=\"progress progress-mini progress-danger active progress-striped\">
-        <div style=\"width: 90%;\" class=\"bar\"></div>
-      </div>
-      <span class=\"percent\">90%</span>
-      <div class=\"stat\">9000.00 / 10000 MB</div>
-    </li>
-    <li class=\"content\"> <span>Progress Bar Test</span>
-      <div class=\"progress progress-mini active progress-striped\">
-        <div style=\"width: 10%;\" class=\"bar\"></div>
-      </div>
-      <span class=\"percent\">10%</span>
-      <div class=\"stat\">1000.00 / 10000 MB</div>
-    </li>";
-	
 	// General Settings
 	/*$amount = 0; $items = "";
 	$result = $database->query("SELECT * FROM `settings` WHERE `type` <> 'skin' ORDER BY `description` ASC");
@@ -134,6 +119,22 @@
 	 * <div id=\"info-7\" class=\"dialog\" title=\"Help: Settings\"></div>
 	 * <a href=\"#\" id=\"help-8\" class=\"menu-link\">
 	 * <span class=\"menu-icon ui-icon ui-icon-info\" title=\"Click for more info\"></span></a> */
+	
+	// Progress Bars
+	$menu .= "<li class=\"content\"> <span>Progress Bar Test</span>
+      <div class=\"progress progress-mini progress-danger active progress-striped\">
+        <div style=\"width: 90%;\" class=\"bar\"></div>
+      </div>
+      <span class=\"percent\">90%</span>
+      <div class=\"stat\">9000.00 / 10000 MB</div>
+    </li>
+    <li class=\"content\"> <span>Progress Bar Test</span>
+      <div class=\"progress progress-mini active progress-striped\">
+        <div style=\"width: 10%;\" class=\"bar\"></div>
+      </div>
+      <span class=\"percent\">10%</span>
+      <div class=\"stat\">1000.00 / 10000 MB</div>
+    </li>";
 	
 	// End of menu
 	$menu .= "</ul>
