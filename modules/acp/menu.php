@@ -26,7 +26,6 @@
 			<ul>
 				<li class=\"{$act["dashboard"]}\"><a href=\"{$settings['acp_loc']}?page=dashboard\"><i class=\"icon icon-dashboard\"></i><span>Dashboard</span></a></li>";
 	
-	// Appearance Settings
 	$amount = 1; $items = "";
 	$result = $database->query("SELECT * FROM `settings` WHERE `type` = 'skin' ORDER BY `description` ASC");
 	while ($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
@@ -80,6 +79,21 @@
 			<li class=\"{$act["navbar"]}\"><a href=\"{$settings['acp_loc']}?page=info\">PHP Information</a></li>
 		</ul>
 	</li>";
+	
+	$menu .= "<li class=\"content\"> <span>Progress Bar Test</span>
+      <div class=\"progress progress-mini progress-danger active progress-striped\">
+        <div style=\"width: 90%;\" class=\"bar\"></div>
+      </div>
+      <span class=\"percent\">90%</span>
+      <div class=\"stat\">9000.00 / 10000 MB</div>
+    </li>
+    <li class=\"content\"> <span>Progress Bar Test</span>
+      <div class=\"progress progress-mini active progress-striped\">
+        <div style=\"width: 10%;\" class=\"bar\"></div>
+      </div>
+      <span class=\"percent\">10%</span>
+      <div class=\"stat\">1000.00 / 10000 MB</div>
+    </li>";
 	
 	// General Settings
 	/*$amount = 0; $items = "";
