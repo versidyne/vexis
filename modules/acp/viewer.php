@@ -141,7 +141,7 @@
 				<th>Title</th>
 				<th>Author</th>
 				<th>Date</th>
-				<th>Hidden</th>
+				<th>Visible</th>
 			</tr>
 		</thead>
 		<tbody>";
@@ -167,7 +167,7 @@
 			} else { $body .= "Unknown"; }
 			$body .= "</td>
 			<td>";
-			// Hidden Column
+			// Visible Column
 			if ($row['enabled'] != NULL) {
 				if ($row['enabled'] == "1") { $checked = "checked"; } else { $checked = ""; }
 				//if ($row['enabled'] == "1") { $body .= "Yes"; } else { $body .= "No"; }
@@ -183,7 +183,7 @@
 			<th>Mime</th>
 			<th>Date</th>
 			<th>Node</th>
-			<th>Hidden</th>
+			<th>Visible</th>
 		</thead>
 		<tbody>";
 		while ($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
@@ -210,7 +210,7 @@
 			} else { $body .= "Unknown"; }
 			$body .= "</td>
 			<td>";
-			// Hidden Column
+			// Visible Column
 			if ($row['enabled'] != NULL) { $body .= "{$row['enabled']}";
 			} else { $body .= "Unknown"; }
 			$body .= "</td>
