@@ -128,10 +128,11 @@
 	$disk_usage = (int) (($disk_used / $disk_total) * 100);
 	$disk_total = $data->sizeunits($disk_total);
 	$disk_used = $data->sizeunits($disk_used);
+	if ($disk_usage > 90) { $danger = "progress-danger"; }
 	
 	// Progress Bars
 	$menu .= "<li class=\"content\"> <span>Disk Space</span>
-      <div class=\"progress progress-mini progress-danger active progress-striped\">
+      <div class=\"progress progress-mini {$danger} active progress-striped\">
         <div style=\"width: {$disk_usage}%;\" class=\"bar\"></div>
       </div>
       <span class=\"percent\">{$disk_usage}%</span>
