@@ -3,6 +3,19 @@
 #####Overview
 This is the complete core of Vexis.  This can be utilized to set up nodes, websites, and anything else one's heart can desire.
 
+#####Requirements
+Service:
+* Apache (Experimental)
+* LigHTTPD
+
+Interpreter:
+* PHP5
+
+Database:
+* MySQL
+* Postgres (Experimental)
+* SQLite (Experimental)
+
 #####Main Goals
 * Maintain a solid system of which website development and graphic design can take place.  The issue in this scenario is that the system is meant to be universal, so the intial installation must be very basic but still have all necessary components for expansion within the main administration panel.  This will be an interesting hurdle to jump over, but it will be important in maintain a solid, universal product for many generations to come.
 
