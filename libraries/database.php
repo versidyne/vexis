@@ -58,9 +58,10 @@
 				return $this->data;
 			}
 			else if ($this->type == "pgsql") {
-				$this->conn = pg_connect("host={$this->server} dbname={$database} user={$this->username} password={$this->password}"); }
+				$this->conn = pg_connect("host={$this->server} dbname={$database} user={$this->username} password={$this->password}");
 				$this->verify($this->conn, "Attempted to connect to server and select database");
 				return $this->conn;
+			}
 			else {
 				return false;
 			}
