@@ -21,7 +21,7 @@
 	$time["classes"] = microtime_float();
 	
 	// Connect and Select Database
-	$database = new database($config['developer']['debug']);
+	$database = new database($config['developer']['debug'], $config['database']['type']);
 	$database->connect($config['database']['host'], $config['database']['user'], $config['database']['pass']);
 	$database->select($config['database']['name']);
 	$time["database"] = microtime_float();
