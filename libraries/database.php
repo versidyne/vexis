@@ -51,11 +51,16 @@
 			return $this->doconnect();
 		}
 		public function doconnect() {
-			if ($this->type == "mysql") { $this->conn = mysql_connect($this->server, $this->username, $this->password); }
-			else if ($this->type == "pgsql") { /*$this->conn = pg_connect("host={$this->server} user={$this->username} password={$this->password}");*/ }
+			if ($this->type == "mysql") {
+				$this->conn = mysql_connect($this->server, $this->username, $this->password);
+				$this->verify($this->conn, "Attempted to connect to server");
+				return $this->conn;
+			}
+			else if ($this->type == "pgsql") {
+				//$this->conn = pg_connect("host={$this->server} user={$this->username} password={$this->password}");
+				return true;
+			}
 			else { return false; }
-			$this->verify($this->conn, "Attempted to connect to server");
-			return $this->conn;
 		}
 		
 		// Select database
