@@ -40,11 +40,11 @@
 			$this->server = $server;
 			$this->username = $username;
 			$this->password = $password;
-			return $this->connect();
+			return $this->doconnect();
 		}
-		public function connect() {
+		public function doconnect() {
 			if ($this->type == "mysql") { $this->conn = mysql_connect($this->server, $this->username, $this->password); }
-			else if ($this->type == "pgsql") { pg_connect("host={$this->server} user={$this->username} password={$this->password}"); }
+			else if ($this->type == "pgsql") { $this->conn = pg_connect("host={$this->server} user={$this->username} password={$this->password}"); }
 			else { return false; }
 			$this->verify($this->conn, "Attempted to connect to server");
 			return $this->conn;
@@ -52,11 +52,18 @@
 		
 		// Select database
 		public function select($database) {
-			if ($this->type == "mysql") { $this->data = mysql_select_db($database, $this->conn); }
-			else if ($this->type == "pgsql") { $this->conn = pg_connect("host={$this->server} dbname={$database} user={$this->username} password={$this->password}"); }
-			else { return false; }
-			$this->verify($this->data, "Attempted to select database");
-			return $this->data;
+			if ($this->type == "mysql") {
+				$this->data = mysql_select_db($database, $this->conn);
+				$this->verify($this->data, "Attempted to select database");
+				return $this->data;
+			}
+			else if ($this->type == "pgsql") {
+				$this->conn = pg_connect("host={$this->server} dbname={$database} user={$this->username} password={$this->password}"); }
+				$this->verify($this->conn, "Attempted to connect to server and select database");
+				return $this->conn;
+			else {
+				return false;
+			}
 		}
 		
 		// Run query
