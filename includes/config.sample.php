@@ -1,12 +1,14 @@
 <?php
 	
-	// Main Database
+	// Main Database (mysql or pgsql)
+	$config['database']['type'] = "mysql";
 	$config['database']['host'] = "localhost";
 	$config['database']['name'] = "database";
 	$config['database']['user'] = "username";
 	$config['database']['pass'] = "password";
 	
 	// Email Database
+	$config['email']['type'] = "mysql";
 	$config['email']['host'] = "localhost";
 	$config['email']['name'] = "database";
 	$config['email']['user'] = "username";

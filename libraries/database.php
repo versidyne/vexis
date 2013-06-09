@@ -4,12 +4,20 @@
 	
 	class database extends core {
 		
-		// Property Declarations
+		// Properties
 		private $conn;
 		private $data;
 		private $debug;
-		//private $type = "mysql";
-		public function __construct($debug) { $this->debug = $debug; }
+		private $type;
+		private $server;
+		private $username;
+		private $password;
+		
+		// Constructs
+		public function __construct($debug, $type) {
+			$this->debug = $debug;
+			$this->type = $type;
+		}
 		
 		// Verify action
 		private function verify($action, $description) {
@@ -29,14 +37,24 @@
 		
 		// Connect to server
 		public function connect($server, $username, $password) {
-			$this->conn = mysql_connect($server, $username, $password);
+			$this->server = $server;
+			$this->username = $username;
+			$this->password = $password;
+			return $this->connect();
+		}
+		public function connect() {
+			if ($this->type == "mysql") { $this->conn = mysql_connect($this->server, $this->username, $this->password); }
+			else if ($this->type == "pgsql") { pg_connect("host={$this->server} user={$this->username} password={$this->password}"); }
+			else { return false; }
 			$this->verify($this->conn, "Attempted to connect to server");
 			return $this->conn;
 		}
 		
 		// Select database
 		public function select($database) {
-			$this->data = mysql_select_db($database, $this->conn);
+			if ($this->type == "mysql") { $this->data = mysql_select_db($database, $this->conn); }
+			else if ($this->type == "pgsql") { $this->conn = pg_connect("host={$this->server} dbname={$database} user={$this->username} password={$this->password}"); }
+			else { return false; }
 			$this->verify($this->data, "Attempted to select database");
 			return $this->data;
 		}
