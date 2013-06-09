@@ -22,12 +22,20 @@
 		// Verify action
 		private function verify($action, $description) {
 			if (!$action) {
-				$error = mysql_errno();
-				$message = mysql_error();
+				if ($this->type == "mysql") {
+					$error = mysql_errno($this->conn);
+					$message = mysql_error($this->conn);
+				}
+				else if ($this->type == "pgsql") {
+					$message = pg_last_error($this->conn);
+				}
+				else {
+					$message = "Unsupported database type";
+				}
 				//$email =  new email($this);
 				if ($this->debug) {
-					echo "Error: {$error}<br>
-					Message: {$message}<br>
+					if ($error) { echo "Error: {$error}<br>"; }
+					echo "Message: {$message}<br>
 					Description: {$description}";
 				}
 				else { echo "Database error."; }
@@ -44,7 +52,7 @@
 		}
 		public function doconnect() {
 			if ($this->type == "mysql") { $this->conn = mysql_connect($this->server, $this->username, $this->password); }
-			else if ($this->type == "pgsql") { $this->conn = pg_connect("host={$this->server} user={$this->username} password={$this->password}"); }
+			else if ($this->type == "pgsql") { /*$this->conn = pg_connect("host={$this->server} user={$this->username} password={$this->password}");*/ }
 			else { return false; }
 			$this->verify($this->conn, "Attempted to connect to server");
 			return $this->conn;
