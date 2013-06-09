@@ -14,17 +14,11 @@
 		private $password;
 		
 		// Constructs
-		public function __construct() {
-			$this->debug = false;
-			$this->type = "mysql";
-		}
-		public function __construct($debug) {
-			$this->debug = $debug;
-			$this->type = "mysql";
-		}
 		public function __construct($debug, $type) {
-			$this->debug = $debug;
-			$this->type = $type;
+			if (!$debug) { $this->debug = $debug; }
+			else { $this->debug = false; }
+			if (!$type) { $this->type = $type; }
+			else { $this->type = "mysql"; }
 		}
 		
 		// Verify action
