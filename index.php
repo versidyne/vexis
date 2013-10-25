@@ -86,8 +86,11 @@
 		if (!isset($raw)) { $raw = NULL; }
 		if (!isset($script_data)) { $script_data = "var curtab=false;"; }
 		
-		$imglink = "<img src={$settings['media_cdn']}?media=";
-		$medialink = "{$settings['media_cdn']}?media=";
+		// Set scroll loader variables
+		$script_data .= "var loader='{$settings["loader"]}';var page='{$page}';";
+		
+		$imglink = "<img src={$settings['media_cdn']}?file=";
+		$medialink = "{$settings['media_cdn']}?file=";
 		
 		// Create skin tags and values
 		$tags = array(

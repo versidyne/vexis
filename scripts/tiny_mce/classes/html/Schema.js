@@ -660,7 +660,6 @@
 		addValidChildren(settings.valid_children);
 		addValidElements(settings.extended_valid_elements);
 
-		// Todo: Remove this when we fix list handling to be valid
 		addValidChildren('+ol[ul|ol],+ul[ul|ol]');
 
 		// Delete invalid elements

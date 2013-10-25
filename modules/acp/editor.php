@@ -146,7 +146,7 @@
 					<div class=\"cell\"><input style=\"width:98%\" type='text' name='title' placeholder='Enter title here'></div>
 				</div>
 				<div class=\"row\">
-					<div class=\"cell\"><textarea style=\"width:98%\" name='body' rows='50'></textarea></div>
+					<div class=\"cell\"><textarea style=\"width:98%\" name='body' rows='30'></textarea></div>
 				</div>
 				<div class=\"row\">
 					<div class=\"cell\"><input style=\"width:98%\" type='text' name='redir' placeholder='Enter Redirect URL here'></div>

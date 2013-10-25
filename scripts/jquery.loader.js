@@ -8,8 +8,8 @@ $(document).ready(function(){
 		if(lastid == $(".data_box:last").attr("id")) return false;
 		var ID = $(".data_box:last").attr("id");
 		lastid = ID;
-		$('div#last_loader').html('<center><img src="/styles/images/loader/loading-circle-6f80f87bf9071740308b21923836b0af.gif"></center>');
-		$.post("/?page=news&raw=true&limit=10&offset="+ID,function(data){
+		$('div#last_loader').html('<center><img src="/styles/images/loader/'+loader+'.gif"></center>');
+		$.post("/?page="+page+"&raw=true&limit=10&offset="+ID,function(data){
 			if (data != "") { $(".data_box:last").after(data); }
 			$('div#last_loader').empty();
 		});

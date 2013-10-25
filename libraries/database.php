@@ -15,10 +15,16 @@
 		
 		// Constructs
 		public function __construct($debug, $type) {
-			if (!$debug) { $this->debug = $debug; }
-			else { $this->debug = false; }
-			if (!$type) { $this->type = $type; }
-			else { $this->type = "mysql"; }
+			$this->debug = $debug;
+			$this->type = $type;
+			/* Former codes
+			 * if (!$debug) { $this->debug = false; }
+			 * if (!$debug) { $this->debug = $debug; }
+			 * else { $this->debug = false; }
+			 * if (!$type) { $this->type = "mysql"; }
+			 * if (!$type) { $this->type = $type; }
+			 * else { $this->type = "mysql"; }
+			 */
 		}
 		
 		// Verify action

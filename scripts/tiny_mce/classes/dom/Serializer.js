@@ -202,7 +202,7 @@
 			}
 		});
 
-		// Fix list elements, TODO: Replace this later
+		// Fix list elements
 		if (settings.fix_list_elements) {
 			htmlParser.addNodeFilter('ul,ol', function(nodes, name) {
 				var i = nodes.length, node, parentNode;

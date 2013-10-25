@@ -141,7 +141,6 @@
 		clone: function(node, deep) {
 			var self = this, clone, doc;
 
-			// TODO: Add feature detection here in the future
 			if (!isIE || node.nodeType !== 1 || deep) {
 				return node.cloneNode(deep);
 			}

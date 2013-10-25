@@ -137,7 +137,6 @@
 
 			// Most browsers support this feature so we report errors
 			// for those at least to help users track their missing plugins etc
-			// todo: Removed since it produced error if the document is unloaded by navigating away, re-add it as an option
 			/*elm.onerror = function() {
 				alert('Failed to load: ' + url);
 			};*/

@@ -1558,7 +1558,6 @@ class securimage
 
     /**
      * Generate a wav file given the $letters in the code
-     * @todo Add ability to merge 2 sound files together to have random background sounds
      * @param array $letters
      * @return string The binary contents of the wav file
      */

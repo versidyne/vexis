@@ -217,7 +217,8 @@ body {
 	-o-transition: all 0.5s ease;
 	
 	/*Reflection*/
-	-webkit-box-reflect: below 0px -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(.7, transparent), to(rgba(0,0,0,0.1)));
+	/* FIXME: CSS Image Location Error */
+	/*-webkit-box-reflect: below 0px -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(.7, transparent), to(rgba(0,0,0,0.1)));*/
 
 }
 .reflect img:hover {

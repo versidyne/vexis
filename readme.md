@@ -1,32 +1,41 @@
 [Vexis](http://getvexis.com/) - Universal Content Management System
 =====
+---
+
 #####Overview
 This is the complete core of Vexis.  This can be utilized to set up nodes, websites, and anything else one's heart can desire.
 
 #####Requirements
-Service:
+
+Services:
+
 * Apache (Experimental)
 * LigHTTPD
 
-Interpreter:
+Interpreters:
+
 * PHP5
 
-Database:
+Databases:
+
 * MySQL
 * Postgres (Experimental)
 * SQLite (Experimental)
 
 #####Main Goals
 * Maintain a solid system of which website development and graphic design can take place.  The issue in this scenario is that the system is meant to be universal, so the intial installation must be very basic but still have all necessary components for expansion within the main administration panel.  This will be an interesting hurdle to jump over, but it will be important in maintain a solid, universal product for many generations to come.
-
 * Maintain several different "gateways" that will provide different types of functionality for various domains, subdomains, and virtual subdirectories.
 
 #####Demonstration
-Website: http://demo.getvexis.com/  
-Admin Panel: http://admin.demo.getvexis.com/
+Website: [http://demo.getvexis.com/](http://demo.getvexis.com/)   
+Admin Panel: [http://admin.demo.getvexis.com/](http://admin.demo.getvexis.com/)
 
-Installation
-=====
+---
+
+##Installation
+
+---
+
 #####Overview
 This is a simple process and will remain as such if instructions are followed carefully.
 
@@ -52,8 +61,12 @@ If this was done correctly you should be able to have a nice output from your we
 #####Finalizing
 Since everything should be smoothly configured, delete the install folder.  This will keep your system from having your settings overwritten which is a large security vulnerability.
 
-System Roles
-=====
+---
+
+##System Roles
+
+---
+
 #####Overview
 The roles that follow are separated within a directory specific to its name.  Within these directories, each role will have its format and place in the order of the system as it runs.  The role will dictate where a particular feature will need to go and from there we can maintain quite a vast sense of universal ability.
 
@@ -101,6 +114,10 @@ echo "Hello World!";
 #####Index.php
 This file is meant to be the "traffic cop" of the system.  It is the only file that is ever truly executed and it builds all data in a particular order.  It is very flexible and should be edited on a rare basis.
 
-Credits
-=====
+---
+
+##Credits
+
+---
+
 This project has always been built by only one programmer, Alex Gurrola.  One day he hopes this system will no longer require his influence to progress without feature creep.

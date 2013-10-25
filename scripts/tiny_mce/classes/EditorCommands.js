@@ -198,7 +198,6 @@
 
 				// WebKit produces lists within block elements so we need to split them
 				// we will replace the native list creation logic to custom logic later on
-				// TODO: Remove this when the list creation logic is removed
 				listElm = dom.getParent(selection.getNode(), 'ol,ul');
 				if (listElm) {
 					listParent = listElm.parentNode;

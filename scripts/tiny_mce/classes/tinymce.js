@@ -818,7 +818,6 @@
 		},
 
 		// Fix function for IE 9 where regexps isn't working correctly
-		// Todo: remove me once MS fixes the bug
 		_replace : function(find, replace, str) {
 			// On IE9 we have to fake $x replacement
 			if (isRegExpBroken) {

@@ -150,7 +150,6 @@
 				ed.selection.moveToBookmark(bookmark);
 				ed.nodeChanged();
 
-				// TODO: Determine if this is still needed.
 				if (tinyMCE.isWebKit) {
 					// move the caret to its original position
 					ed.selection.collapse(false);
