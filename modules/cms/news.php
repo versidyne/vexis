@@ -2,37 +2,42 @@
 	
 	if ($validator['code'] != md5($validator['key'])) { echo "Please do not access this file directly."; exit; }
 	
+	// TODO: Gather News template from Skin Table
+	
 	if ($_GET['output']) {
 		
 		if ($_GET['output'] == "atom") {
-			// nothing yet
-		}
-		else {
 			
 			// Load Classes
-			$feed = new markup("xml");
+			$feed = new markup("atom");
 			
-			// Create Feed Page
-			$rss_title = "{$settings['brand']} - News";
-			$rss_link = "{$settings['website']}?page=news&amp;output=rss";
-			$news_link = "{$settings['website']}?page=news";
-			$rss_description = "News related to our company and its assets.";
-			$rss_category = "News";
-			$rss_image = false;
-			$rss_image_title = "Test";
-			$rss_image_url = "Test";
-			$rss_image_link = "Test";
-			$rss_image_width = "Test";
-			$rss_image_height = "Test";
+		} elseif ($_GET['output'] == "rss") {
 			
+			// Load Classes
+			$feed = new markup("rss");
+			
+			// Load Variables
 			$mvar = $member->vars($member->lookup($settings['admin_email']));
-			$webmaster = "{$mvar['email']} ({$mvar['nickname']})";
 			
-			// Display feed
+			// Gather Information
+			$info["category"] = "News";
+			$info["copyright"] = $settings['copyright'];
+			$info["description"] = "News related to our company and its assets.";
+			//$info["feed_link"] = "{$settings['website']}?page=news&amp;output=rss";
+			$info["image"] = false;
+			$info["image_title"] = "Test";
+			$info["image_url"] = "Test";
+			$info["image_link"] = "Test";
+			$info["image_width"] = "Test";
+			$info["image_height"] = "Test";
+			$info["language"] = $settings['language'];
+			$info["link"] = "{$settings['website']}?page=news";
+			$info["title"] = "{$settings['brand']} - News";
+			$info["webmaster"] = "{$mvar['email']} ({$mvar['nickname']})";
+			
+			// Generate Feed
 			$feed->header();
-			echo $feed->details($rss_title, $rss_link, $rss_description, $settings['language'], $settings['copyright'], $webmaster, $rss_category, $rss_image, $rss_image_title, $rss_image_url, $rss_image_link, $rss_image_width, $rss_image_height);
-			
-			// Display items
+			$feed->details($info);
 			$result = $database->query ("SELECT * FROM content WHERE `type` = 'news' ORDER BY `timestamp` DESC");
 			while ($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
 				$mvar = $member->vars($row['author']);
@@ -41,14 +46,16 @@
 				$description = $row['body'];
 				$description = str_replace("<", "&lt;", $description);
 				$description = str_replace(">", "&gt;", $description);
-				echo $feed->item($gmt_date, $row['title'], $description, "{$news_link}&amp;post={$row['id']}", "{$mvar['email']} ({$mvar['nickname']})", "{$news_link}&amp;post={$row['id']}");
+				$feed->item($gmt_date, $row['title'], $description, "{$info['link']}&amp;post={$row['id']}", "{$mvar['email']} ({$mvar['nickname']})", "{$info['link']}&amp;post={$row['id']}");
 			}
 			mysql_free_result($result);
+			$feed->footer();
 			
-			// Display footer
-			echo $feed->footer();
-			//$raw_data = "true";
+			// Display Feed
+			echo $feed->export();
 			exit;
+			//$raw_data = "true";
+			
 		}
 	}
 	

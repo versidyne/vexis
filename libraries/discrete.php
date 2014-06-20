@@ -7,6 +7,8 @@
 	 * by generating an initial load then storing it until the
 	 * admin has changed data that the discrete value holds, in
 	 * which case it will be generated again. */
+	 
+	 // TODO: Develop discrete library
 	
 	class discrete {
 		

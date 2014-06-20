@@ -98,8 +98,8 @@
 			// Create featured pages
 			$result = $this->database->query("SELECT * FROM content WHERE `featured` > 0 ORDER BY `featured` ASC");
 			while ($content = mysql_fetch_array($result, MYSQL_ASSOC)) {
-				//if ($content["featured"] == $last) { $pages .= "<li class=\"last\"><h2>{$content["title"]}</h2> \n <p class=\"imgholder\"><img src=\"skins/modern-business/images/demo/290x100.gif\" alt=\"\" /></p> \n <p>{$content["description"]} <a href=\"?page={$content["shortname"]}\">More &raquo;</a></p></li> \n"; }
-				//else { $pages .= "<li><h2>{$content["title"]}</h2> \n <p class=\"imgholder\"><img src=\"skins/modern-business/images/demo/290x100.gif\" alt=\"\" /></p> \n <p>{$content["description"]} <a href=\"?page={$content["shortname"]}\">More &raquo;</a></p></li> \n"; }
+				//if ($content["featured"] == $last) { $pages .= "<li class=\"last\"><h2>{$content["title"]}</h2> \n <p class=\"imgholder\"><img src=\"skins/modern-business/img/demo/290x100.gif\" alt=\"\" /></p> \n <p>{$content["description"]} <a href=\"?page={$content["shortname"]}\">More &raquo;</a></p></li> \n"; }
+				//else { $pages .= "<li><h2>{$content["title"]}</h2> \n <p class=\"imgholder\"><img src=\"skins/modern-business/img/demo/290x100.gif\" alt=\"\" /></p> \n <p>{$content["description"]} <a href=\"?page={$content["shortname"]}\">More &raquo;</a></p></li> \n"; }
 				if ($content["featured"] == $last) {
 					$tags = array("{class}"=>"last","{title}"=>$content["title"],"{description}"=>$content["description"],"{shortname}"=>$content["shortname"]);
 					$pages .= $this->parse($tags, "", $this->custom['featured']);
@@ -129,7 +129,7 @@
 				elseif ($header["type"] == "script") {
 					if ($header["remote"] == true) { $header["loc"] = $header["src"]; }
 					else {
-						if ($header["src"] == true) { $header["loc"] = "scripts/{$header["src"]}"; }
+						if ($header["src"] == true) { $header["loc"] = "/scripts/{$header["src"]}"; }
 						else { $header["loc"] = false; }
 					}
 					if ($header["loc"] == false ) { $headers .= "<script type=\"{$header["mime"]}\">{$header["content"]}</script>\n"; }
@@ -163,8 +163,8 @@
 			// Create featured pages
 			$result = $this->database->query("SELECT * FROM content WHERE `featured` > 0 ORDER BY `featured` ASC");
 			while ($content = mysql_fetch_array($result, MYSQL_ASSOC)) {
-				if ($content["featured"] == $last) { $pages .= "<li class=\"last\"><h2>{$content["title"]}</h2> \n <p class=\"imgholder\"><img src=\"skins/business/images/demo/290x100.gif\" alt=\"\" /></p> \n <p>{$content["description"]} <a href=\"?page={$content["shortname"]}\">More &raquo;</a></p></li> \n"; }
-				else { $pages .= "<li><h2>{$content["title"]}</h2> \n <p class=\"imgholder\"><img src=\"skins/business/images/demo/290x100.gif\" alt=\"\" /></p> \n <p>{$content["description"]} <a href=\"?page={$content["shortname"]}\">More &raquo;</a></p></li> \n"; }
+				if ($content["featured"] == $last) { $pages .= "<li class=\"last\"><h2>{$content["title"]}</h2> \n <p class=\"imgholder\"><img src=\"skins/business/img/demo/290x100.gif\" alt=\"\" /></p> \n <p>{$content["description"]} <a href=\"?page={$content["shortname"]}\">More &raquo;</a></p></li> \n"; }
+				else { $pages .= "<li><h2>{$content["title"]}</h2> \n <p class=\"imgholder\"><img src=\"skins/business/img/demo/290x100.gif\" alt=\"\" /></p> \n <p>{$content["description"]} <a href=\"?page={$content["shortname"]}\">More &raquo;</a></p></li> \n"; }
 			}
 			mysql_free_result($result);
 			// Return data
@@ -172,8 +172,9 @@
 		}
 		
 		// Navbar Display
-		public function navbar($current_page, $reverse = false) {
+		public function navbar($current_page, $vfs = "false", $reverse = false) {
 			$links = "";
+			if ($vfs == "true") { $subdir = "/pages/"; } else { $subdir = "/?page="; }
 			// Find last navbutton
 			$result = $this->database->query("SELECT * FROM `content` WHERE `navbutton` > 0 AND `enabled` = 1 ORDER BY `navbutton` DESC LIMIT 1");
 			while ($content = mysql_fetch_array($result, MYSQL_ASSOC)) { $last = $content["navbutton"]; }
@@ -186,7 +187,7 @@
 				$subresult = $this->database->query("SELECT * FROM content WHERE `navparent` = '{$content["navbutton"]}' AND `enabled` = 1 ORDER BY `navsub` ASC");
 				if (mysql_num_rows($subresult) > 0) {
 					while ($subcontent = mysql_fetch_array($subresult, MYSQL_ASSOC)) {
-						$tags = array("{class}"=>"","{title}"=>$subcontent["title"],"{description}"=>$subcontent["description"],"{shortname}"=>$subcontent["shortname"]);
+						$tags = array("{class}"=>"","{title}"=>$subcontent["title"],"{description}"=>$subcontent["description"],"{link}"=>"{$subdir}{$subcontent['shortname']}");
 						$navsub .= $this->parse($tags, "", $this->custom['navbar']);
 						$navsub .= "\n";
 					}
@@ -199,33 +200,33 @@
 				// Use header if title doesn't exist
 				if ($content["title"] == ""  && $content["header"] != "") {
 					if ($content["shortname"] == $current_page) {
-						$tags = array("{class}"=>"active","{title}"=>$content["header"],"{description}"=>$content["description"],"{shortname}"=>$content["shortname"],"{navsub}"=>$navsub);
+						$tags = array("{class}"=>"active","{title}"=>$content["header"],"{description}"=>$content["description"],"{link}"=>"{$subdir}{$content['shortname']}","{navsub}"=>$navsub);
 						$links .= $this->parse($tags, "", $template);
 					}
 					else {
-						$tags = array("{class}"=>"","{title}"=>$content["header"],"{description}"=>$content["description"],"{shortname}"=>$content["shortname"],"{navsub}"=>$navsub);
+						$tags = array("{class}"=>"","{title}"=>$content["header"],"{description}"=>$content["description"],"{link}"=>"{$subdir}{$content['shortname']}","{navsub}"=>$navsub);
 						$links .= $this->parse($tags, "", $template);
 					}
 				}
 				// Last page
 				elseif ($content["navbutton"] == $last) {
 					if ($content["shortname"] == $current_page) {
-						$tags = array("{class}"=>"active last","{title}"=>$content["title"],"{description}"=>$content["description"],"{shortname}"=>$content["shortname"],"{navsub}"=>$navsub);
+						$tags = array("{class}"=>"active last","{title}"=>$content["title"],"{description}"=>$content["description"],"{link}"=>"{$subdir}{$content['shortname']}","{navsub}"=>$navsub);
 						$links .= $this->parse($tags, "", $template);
 					}
 					else {
-						$tags = array("{class}"=>"last","{title}"=>$content["title"],"{description}"=>$content["description"],"{shortname}"=>$content["shortname"],"{navsub}"=>$navsub);
+						$tags = array("{class}"=>"last","{title}"=>$content["title"],"{description}"=>$content["description"],"{link}"=>"{$subdir}{$content['shortname']}","{navsub}"=>$navsub);
 						$links .= $this->parse($tags, "", $template);
 					}
 				}
 				// Normal pages
 				else {
 					if ($content["shortname"] == $current_page) {
-						$tags = array("{class}"=>"active","{title}"=>$content["title"],"{description}"=>$content["description"],"{shortname}"=>$content["shortname"],"{navsub}"=>$navsub);
+						$tags = array("{class}"=>"active","{title}"=>$content["title"],"{description}"=>$content["description"],"{link}"=>"{$subdir}{$content['shortname']}","{navsub}"=>$navsub);
 						$links .= $this->parse($tags, "", $template);
 					}
 					else {
-						$tags = array("{class}"=>"","{title}"=>$content["title"],"{description}"=>$content["description"],"{shortname}"=>$content["shortname"],"{navsub}"=>$navsub);
+						$tags = array("{class}"=>"","{title}"=>$content["title"],"{description}"=>$content["description"],"{link}"=>"{$subdir}{$content['shortname']}","{navsub}"=>$navsub);
 						$links .= $this->parse($tags, "", $template);
 					}
 				}

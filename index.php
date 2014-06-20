@@ -87,7 +87,7 @@
 		if (!isset($script_data)) { $script_data = "var curtab=false;"; }
 		
 		// Set scroll loader variables
-		$script_data .= "var loader='{$settings["loader"]}';var page='{$page}';";
+		$script_data .= "var page='{$page}';var load_animation='{$settings["load_animation"]}';var load_increment='{$settings["load_increment"]}';";
 		
 		$imglink = "<img src={$settings['media_cdn']}?file=";
 		$medialink = "{$settings['media_cdn']}?file=";
@@ -99,8 +99,8 @@
 			"{links}" => $skin->links($settings, $page),
 			"{link-login}" => $skin->linklogin($settings, $page),
 			"{link-register}" => $skin->linkregister($settings, $page),
-			"{navbar}" => $skin->navbar($page),
-			"{navrev}" => $skin->navbar($page, true),
+			"{navbar}" => $skin->navbar($page, $settings['vfs']),
+			"{navrev}" => $skin->navbar($page, $settings['vfs'], true),
 			"{breadcrumbs}" => $skin->breadcrumbs($page),
 			"{featured}" => $skin->featured(),
 			"{login}" => $skin->login($settings, $page),

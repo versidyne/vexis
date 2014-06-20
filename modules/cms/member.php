@@ -2,6 +2,8 @@
 	
 	if ($validator['code'] != md5($validator['key'])) { echo "Please do not access this file directly."; exit; }
 	
+	// TODO: Contemplate changing Member module to a Member gateway
+	
 	// file info block
 	// if info = true return data then exit
 	// array( name = Member Control Panel, version = 1, timestamp = 000

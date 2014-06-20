@@ -17,13 +17,13 @@
 	color: #666;
 }
 #toolbar #logo {
-	background: url("../images/toolbar.png") no-repeat scroll 0 0 transparent;
+	background: url("../images/cplogo.jpg") no-repeat scroll 0 0 transparent;
 	height: 31px;
-	left: 20px;
+	/*left: 20px;*/
 	line-height: 600px;
 	overflow: hidden;
 	position: relative;
-	top: 26px;
+	/*top: 26px;*/
 	width: 200px;
 	display: block;
 }

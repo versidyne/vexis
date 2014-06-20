@@ -9,11 +9,15 @@
 		public function __construct($language) { $this->language = $language; }
 		
 		public function column ($variable) {
-			$output = false;
-			if ($this->language == "xml") {
-				$this->local .= "<{$variable}>";
-			} elseif ($this->language == "json") {
-				$this->local .= "\"{$variable}\": {";
+			$output = true;
+			if ($this->language == "json") {
+				$this->local .= "\"{$variable}\": {\n";
+			} elseif ($this->language == "xml") {
+				$this->local .= "<{$variable}>\n";
+			} elseif ($this->language == "rss") {
+				$this->local .= "<{$variable}>\n";
+			} elseif ($this->language == "atom") {
+				$this->local .= "<{$variable}>\n";
 			} else {
 				$output = false;
 			}
@@ -21,11 +25,15 @@
 		}
 		
 		public function column_end ($variable) {
-			$output = false;
-			if ($this->language == "xml") {
-				$this->local .= "</{$variable}>";
-			} elseif ($this->language == "json") {
-				$this->local .= "},";
+			$output = true;
+			if ($this->language == "json") {
+				$this->local .= "},\n";
+			} elseif ($this->language == "xml") {
+				$this->local .= "</{$variable}>\n";
+			} elseif ($this->language == "rss") {
+				$this->local .= "</{$variable}>\n";
+			} elseif ($this->language == "atom") {
+				$this->local .= "</{$variable}>\n";
 			} else {
 				$output = false;
 			}
@@ -34,10 +42,14 @@
 		
 		public function row ($variable, $value) {
 			$output = true;
-			if ($this->language == "xml") {
-				$this->local .= "<{$variable}>{$value}</{$variable}>";
-			} elseif ($this->language == "json") {
-				$this->local .= "\"{$variable}\": \"{$value}\",";
+			if ($this->language == "json") {
+				$this->local .= "\"{$variable}\": \"{$value}\",\n";
+			} elseif ($this->language == "xml") {
+				$this->local .= "<{$variable}>{$value}</{$variable}>\n";
+			} elseif ($this->language == "rss") {
+				$this->local .= "<{$variable}>{$value}</{$variable}>\n";
+			} elseif ($this->language == "atom") {
+				$this->local .= "<{$variable}>{$value}</{$variable}>\n";
 			} else {
 				$output = false;
 			}
@@ -46,12 +58,14 @@
 		
 		public function footer () {
 			$output = true;
-			if ($this->language == "xml") {
-				$this->local .= "";
-			} elseif ($this->language == "json") {
+			if ($this->language == "json") {
 				$this->local .= "}";
+			} elseif ($this->language == "xml") {
+				$this->local .= "";
 			} elseif ($this->language == "rss") {
 				$this->local .= "</channel></rss>";
+			} elseif ($this->language == "atom") {
+				$this->local .= "</feed>";
 			} else {
 				$output = false;
 			}
@@ -60,64 +74,79 @@
 		
 		public function header () {
 			$output = true;
-			if ($this->language == "xml") {
-				//header("Content-Type: application/xml; charset=ISO-8859-1");
-			} elseif ($this->language == "json") {
-				//header("Content-Type: application/xml; charset=ISO-8859-1");
-				$this->local .= "{";
-			} elseif ($this->language == "rss") {
+			if ($this->language == "json") {
 				header("Content-Type: application/xml; charset=ISO-8859-1");
+				$this->local .= "{\n";
+			} elseif ($this->language == "xml") {
+				header("Content-Type: application/xml; charset=ISO-8859-1");
+				$this->local .= "<?xml version=\"1.0\" encoding=\"ISO-8859-1\" ?>\n";
+			} elseif ($this->language == "rss") {
+				header("Content-Type: application/rss+xml; charset=ISO-8859-1");
+				$this->local .= "<?xml version=\"1.0\" encoding=\"ISO-8859-1\" ?><rss version=\"2.0\"><channel>\n";
+			} elseif ($this->language == "atom") {
+				header("Content-Type: application/atom+xml; charset=ISO-8859-1");
+				$this->local .= "<?xml version=\"1.0\" encoding=\"ISO-8859-1\" ?><feed xmlns=\"http://www.w3.org/2005/Atom\">\n";
 			} else {
 				$output = false;
 			}
 			return $output;
 		}
 		
-		//public function create() {
-			//return CreateDetails() . CreateItems();
-		//}
-		
-		public function details ($title, $link, $description, $language, $copyright, $webmaster, $category, $image, $image_title, $image_url, $image_link, $image_width, $image_height) {
-			$copyright = str_replace("&copy;", "©", $copyright);
-			$details = "<?xml version=\"1.0\" encoding=\"ISO-8859-1\" ?>   
-			<rss version=\"2.0\">   
-				<channel>   
-					<title>".$title.'</title>   
-					<link>'.$link.'</link>   
-					<description>'.$description.'</description>   
-					<language>'.$language.'</language>
-					<copyright>'.$copyright.'</copyright>
-					<webMaster>'.$webmaster.'</webMaster>
-					<category>'.$category.'</category>';
-			if ($image == true) {
-				$details .= '
-				<image>   
-					<title>'.$image_title.'</title>   
-					<url>'.$image_url.'</url>   
-					<link>'.$image_link.'</link>   
-					<width>'.$image_width.'</width>   
-					<height>'.$image_height.'</height>   
-				</image>';
-			}
-			return $details;
+		// Export local data
+		public function export() {
+			return $this->local;
 		}
 		
-		public function item ($date, $title, $description, $link, $author, $guid) {
-			$item = false;
+		/*public function create() {
+			return CreateDetails() . CreateItems();
+		}*/
+		
+		// RSS Details
+		public function details ($info) {
+			$output = true;
 			if ($this->language == "rss") {
-				$item = "<item>
-				<pubDate>{$date}</pubDate>
-				<title>{$title}</title>
-				<description>{$description}</description>
-				<link>{$link}</link>
-				<author>{$author}</author>
-				<guid isPermaLink=\"false\">{$guid}</guid>
-				</item>";
+				$info['copyright'] = str_replace("&copy;", "©", $info['copyright']);
+				$this->local .= "<title>{$info['title']}</title>
+						<link>{$info['link']}</link>
+						<description>{$info['description']}</description>
+						<language>{$info['language']}</language>
+						<copyright>{$info['copyright']}</copyright>
+						<webMaster>{$info['webmaster']}</webMaster>
+						<category>{$info['category']}</category>\n";
+				if ($image == true) {
+					$this->local .= "<image>
+						<title>{$info['image_title']}</title>   
+						<url>{$info['image_url']}</url>   
+						<link>{$info['image_link']}</link>   
+						<width>{$info['image_width']}</width>   
+						<height>{$info['image_height']}</height>   
+					</image>\n";
+				}
+			} else {
+				$output = false;
 			}
-			return $item;
+			return $output;
 		}
 		
-		// Rss Reader
+		// RSS Items
+		public function item ($date, $title, $description, $link, $author, $guid) {
+			$output = true;
+			if ($this->language == "rss") {
+				$this->local .= "<item>
+					<pubDate>{$date}</pubDate>
+					<title>{$title}</title>
+					<description>{$description}</description>
+					<link>{$link}</link>
+					<author>{$author}</author>
+					<guid isPermaLink=\"false\">{$guid}</guid>
+				</item>\n";
+			} else {
+				$output = false;
+			}
+			return $output;
+		}
+		
+		// RSS Reader
 		public function read($link, $clean_desc = true) {
 			if ($this->language == "rss") {
 				$doc = new DOMDocument();

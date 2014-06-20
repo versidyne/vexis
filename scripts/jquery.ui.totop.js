@@ -4,7 +4,7 @@
  		var defaults = {
 			text: '',
 			min: 200,			
-			scrollSpeed: 800,
+			scrollSpeed: 600,
   			containerID: 'toTop',
 			containerHoverID: 'toTopHover',
 			easingType: 'linear',
@@ -57,9 +57,11 @@
 				});
 			}
 			if ( sd > settings.min ) 
-				$(containerIDhash).css({display: 'block'});
+				//$(containerIDhash).css({display: 'block'});
+				$('#toTop').fadeIn();
 			else 
-				$(containerIDhash).css({display: 'none'});
+				//$(containerIDhash).css({display: 'none'});
+				$('#toTop').fadeOut();
 		});
 		$(window).resize(function(){top()})
 };

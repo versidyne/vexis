@@ -1,5 +1,7 @@
 <?php
 	
+	// TODO: Develop and test core library
+	
 	// all libraries will be an extension of this class, possibly
 	abstract class core {
 		
