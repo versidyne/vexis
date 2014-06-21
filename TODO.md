@@ -63,3 +63,7 @@ Freelancers
 * This will work in such a way as to allow bidding from freelancers on a particular project that has been requested.  This will allow commerce to take place, easily, for small businesses.
 * This will allow a person to also get paid through the marketplace.
 * This will only pay out once the employer has been satisfied.
+
+#####Updater
+* Utilize MD5 Hashes to gather file changes and possibly diff files to detect additions.
+* Possibly utilize an algorithm to sort out similarities in the files, only leaving the differences.

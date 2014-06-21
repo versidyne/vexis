@@ -61,6 +61,18 @@
 	$skin = new skin($database);
 	$skin->customize($settings['skin']);
 	$time["customize"] = microtime_float();
+
+    // Retreive credentials
+    $credentials = $authentication->retreive_credentials($authentication->cookie_data($settings["cookie_prefix"]));
+    $time["credentials"] = microtime_float();
+
+    // Generate Member Information
+    $member = new member($database);
+    $mvar = $member->vars($member->lookup($credentials["email"]));
+    $gvar = $member->group($mvar["group"]);
+    $pvar = $member->profile($mvar["id"]);
+    $allowed = explode(",", $gvar["allowed"]);
+    $time["member"] = microtime_float();
 	
 	// Load extensions as top level additions
 	
@@ -88,17 +100,18 @@
 		
 		// Set scroll loader variables
 		$script_data .= "var page='{$page}';var load_animation='{$settings["load_animation"]}';var load_increment='{$settings["load_increment"]}';";
-		
+
+        // CDN Variables
 		$imglink = "<img src={$settings['media_cdn']}?file=";
 		$medialink = "{$settings['media_cdn']}?file=";
+
+        // Virtual File System
+        if ($settings['vfs'] == "true") { $subdir = "pages/"; } else { $subdir = "?page="; }
 		
 		// Create skin tags and values
 		$tags = array(
 			"{headers}" => $skin->headers(),
 			"{clock}" => $skin->clock($settings),
-			"{links}" => $skin->links($settings, $page),
-			"{link-login}" => $skin->linklogin($settings, $page),
-			"{link-register}" => $skin->linkregister($settings, $page),
 			"{navbar}" => $skin->navbar($page, $settings['vfs']),
 			"{navrev}" => $skin->navbar($page, $settings['vfs'], true),
 			"{breadcrumbs}" => $skin->breadcrumbs($page),
@@ -127,6 +140,9 @@
 			"{domain}" => $settings['domain'],
 			"{website}" => $settings['website'],
 			"{email}" => $data->retreive_cookie($settings, "email"),
+			"{name}" => "{$pvar['first']} {$pvar['last']}",
+			"{hash}" => md5(strtolower(trim($mvar['email']))),
+            "{vfs}" => $subdir,
 			"{script-data}" => $script_data,
 			"{google-analytics}" => $settings['google_analytics'],
 			"{image:" => $imglink,

@@ -1,6 +1,9 @@
 <?php
 
-	class file {
+	include_once "core.php";
+	
+	class file extends core {
+        
 		// Copy
 		/*function copy($old, $new) {
 			return false;

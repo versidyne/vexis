@@ -14,10 +14,10 @@
 	
 	// Declare classes
 	$form = new form($database);
-	$member = new member($database);
+	//$member = new member($database);
 	
 	// Retreive credentials
-	$credentials = $authentication->retreive_credentials($authentication->cookie_data($settings["cookie_prefix"]));
+	//$credentials = $authentication->retreive_credentials($authentication->cookie_data($settings["cookie_prefix"]));
 	
 	// add construction option as well
 	// Check for developer cookie

@@ -17,48 +17,20 @@
         
 		// Account Login Form
 		public function login($settings, $page) {
-			$authentication = new authentication($this->database);
-			$form = new form($this->database);
-			$data = "";
+            $authentication = new authentication($this->database);
 			if ($page == "logout") { $logged_in = false; }
 			elseif ($authentication->authenticate($settings['cookie_prefix']) == true) { $logged_in = true; }
 			else { $logged_in = false; }
+
 			if ($logged_in == true) {
-				$infobox = "<h1>Account info</h1><h2>You're logged in.</h2><p><a href='?page=member'>Control Panel</a><br><a href='?page=logout'>Logout</a></p>";
-				$data = $infobox;
+                $data = $this->parse($tags, "", $this->custom['logout']);
 			}
 			else {
-				$loginbox = $form->parse("loginbox");
-				if ($loginbox['existence'] == true) { $data = "<h1>{$loginbox['header']}</h1> <p>{$loginbox['body']}</p>"; }
+                $tags = array("{action}"=>"{$settings['website']}?page=login");
+                $data = $this->parse($tags, "", $this->custom['login']);
 			}
-			return $data;
-		}
 
-		// Links
-		public function links($settings, $page) {
-			$authentication = new authentication($this->database);
-			if ($page == "logout") { $data = $settings['link_unauth']; }
-			elseif ($authentication->authenticate($settings['cookie_prefix']) == true) { $data = $settings['link_auth']; }
-			else { $data = $settings['link_unauth']; }
-			return $data;
-		}
-		
-		// Links
-		public function linklogin($settings, $page) {
-			$authentication = new authentication($this->database);
-			if ($page == "logout") { $data = "<a href=\"/?page=login\">Login</a>"; }
-			elseif ($authentication->authenticate($settings['cookie_prefix']) == true) { $data = "<a href=\"/?page=logout\">Logout</a>"; }
-			else { $data = "<a href=\"/?page=login\">Login</a>"; }
-			return $data;
-		}
-		
-		// Links
-		public function linkregister($settings, $page) {
-			$authentication = new authentication($this->database);
-			if ($page == "logout") { $data = "<a href=\"/?page=register\">Register</a>"; }
-			elseif ($authentication->authenticate($settings['cookie_prefix']) == true) { $data = "<a href=\"/?page=member\">Control Panel</a>"; }
-			else { $data = "<a href=\"/?page=register\">Register</a>"; }
-			return $data;
+            return $data;
 		}
 		
 		// Breadcrumb Display
@@ -319,18 +291,6 @@
 		public function search($settings) {
 			$tags = array("<action>"=>"{$settings['website']}?page=search");
 			$data = $this->parse($tags, "", $this->custom['search']);
-			/*$data = "<form action='{$settings['website']}?page=search' method='get'>
-			<fieldset>
-			
-			<legend>Search</legend>
-			<input type='hidden' name='page' value='search' />
-			
-			<input class='searchfield' id=\"query\" name=\"query\" type='text' value='Search Our Website&hellip;'  onfocus=\"this.value=(this.value=='Search Our Website&hellip;')? '' : this.value ;\" onkeyup=\"searchSuggest();\" autocomplete=\"off\" />
-			<input class='searchbutton' type='submit' id='go' value='search' title='search' />
-			
-			</fieldset>
-			<div id=\"suggest\"></div>
-			</form>";*/
 			return $data;
 		}
 		
