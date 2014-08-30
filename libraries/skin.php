@@ -146,7 +146,7 @@
 		// Navbar Display
 		public function navbar($current_page, $vfs = "false", $reverse = false) {
 			$links = "";
-			if ($vfs == "true") { $subdir = "/pages/"; } else { $subdir = "/?page="; }
+			if ($vfs == "true") { $subdir = "/page/"; } else { $subdir = "/?page="; }
 			// Find last navbutton
 			$result = $this->database->query("SELECT * FROM `content` WHERE `navbutton` > 0 AND `enabled` = 1 ORDER BY `navbutton` DESC LIMIT 1");
 			while ($content = mysql_fetch_array($result, MYSQL_ASSOC)) { $last = $content["navbutton"]; }
