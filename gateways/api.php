@@ -58,7 +58,7 @@
 						$output .= "{$row}{$cell}{$avar["nickname"]}{$cell}online";
 					}
 				}
-				if ($_GET['info'] == "contacts") {
+				elseif ($_GET['info'] == "contacts") {
 					$output = 0;
 					$mvar = $member->vars($member->lookup($credentials['email']));
 					$contacts = mysql_fetch_array($database->query("SELECT * FROM `contacts` WHERE `author` = '{$mvar["id"]}' ORDER BY `first` DESC"), MYSQL_ASSOC);
@@ -72,7 +72,7 @@
 					$output = "{$cell}{$mvar["group"]}{$cell}{$mvar["nickname"]}{$cell}";
 				}
 				elseif ($_GET['info'] == "serverlocation") {
-					$ip = "12.227.121.68";
+					$ip = "198.58.125.19";
 					$port = "7900";
 					$output = $ip.":".$port;
 				}
@@ -115,6 +115,22 @@
 		elseif ($_GET['info'] == "uastring") { $output = $_SERVER['HTTP_USER_AGENT']; }
 		elseif ($_GET['info'] == "browser") { $output = $info->browser(); }
 		elseif ($_GET['info'] == "system") { $output = $info->system(); }
+	}
+	elseif ($_GET['update']) {
+		if ($_GET['update'] == "list") {
+			$output = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
+<apps>
+	<cresco>0.1.0.0</cresco>
+	<vexis-crawler>0.1.0.0</vexis-crawler>
+	<vexis-os>0.1.0.0</vexis-os>
+	<vexis-server>0.1.0.0</vexis-server>
+	<vexis-updater>0.1.0.0</vexis-updater>
+	<vexis-windows>0.9.0.0</vexis-windows>
+</apps>";
+		}
+		elseif ($_GET['update'] == "vexis-windows") {
+			$output = file_get_contents("products/vexis-windows.zip");
+		}
 	}
 	
 	if (!$output) { $output = 0; }
