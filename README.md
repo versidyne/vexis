@@ -8,7 +8,7 @@ This is the complete core of Vexis.  This can be utilized to set up nodes, websi
 
 Services:
 
-* Apache (Experimental)
+* Apache
 * LigHTTPD
 
 Interpreters:
