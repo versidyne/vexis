@@ -1,7 +1,6 @@
 <?php
 	
-	// Instead of changing skins, styles will be all that is altered
-	// jquery skin, css style, that is all
+	// Instead of changing skins, css styles will be all that is altered
 	
 	// Requested page
 	if (!isset($_GET['page'])) { $page = "dashboard"; }
@@ -15,12 +14,11 @@
 	$member = new member($database);
 	$credentials = $authentication->retreive_credentials($authentication->cookie_data($settings["cookie_prefix"]));
 	if ($member->permissions($member->lookup($credentials["email"]), "restricted", "admin")) {
-		//header ("Location: {$settings["website"]}?page=member");
-		//if ($page != "login") { header ("Location: {$settings["acp_loc"]}?page=login"); }
+		/*header ("Location: {$settings["website"]}?page=member");
+		if ($page != "login") { header ("Location: {$settings["acp_loc"]}?page=login"); }*/
 		$page = "login";
 	}
 	
-	// Tab order
 	$tab = array();
 	$tab["appearance"] = 0;
 	$tab["content"] = 1;
@@ -30,23 +28,20 @@
 	$tab["seo-tools"] = 5;
 	$tab["settings"] = 6;
 	
-	// Module information
 	$module = array();
 	$module["loc"]  = "modules/{$gateway}/{$page}.php";
 	$module["name"] = "{$page}";
-	
-	// Include module
 	if (file_exists($module["loc"])) {
 		include $module["loc"];
 	} else {
-		$custom_header = "Nonexistant";
+		$custom_header = "Nonexistent";
 		$body = "We apologize, but this page does not exist.";
 	}
 	
-	//if ($body) { $raw = true; $custom_body = "<div class='editor'>".$body."</div>"; }
-	//if ($row) { $row = ""; }
-	//$custom_body = "<div class='editor'>".$body."</div>";
-	//$raw = true;
+	/*if ($body) { $raw = true; $custom_body = "<div class='editor'>".$body."</div>"; }
+	if ($row) { $row = ""; }
+	$custom_body = "<div class='editor'>".$body."</div>";
+	$raw = true;*/
 	
 	if (!isset($continue) || !$continue) {
 		if ($page != "login") {
@@ -56,7 +51,6 @@
 		if (isset($redir)) {
 			header("Location: {$redir}");
 		}
-		// Display page
 		echo "<html>
 			<head>
 				<title>Control Panel</title>
