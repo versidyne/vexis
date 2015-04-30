@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <title>Vexis-native by versidyne</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="inner">
+        <h1>Vexis-native</h1>
+        <h2>Universal Content Management System</h2>
+        <a href="https://github.com/versidyne/vexis-native" class="button"><small>View project on</small> GitHub</a>
+      </div>
+    </header>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <h1>
+<a id="vexis---universal-content-management-system" class="anchor" href="#vexis---universal-content-management-system" aria-hidden="true"><span class="octicon octicon-link"></span></a>
+<a href="http://getvexis.com/">Vexis</a> - Universal Content Management System</h1>
+
+<h5>
+<a id="overview" class="anchor" href="#overview" aria-hidden="true"><span class="octicon octicon-link"></span></a>Overview</h5>
+
+<p>This is the complete core of Vexis.  This can be utilized to set up nodes, websites, and anything else one's heart can desire.</p>
+
+<h5>
+<a id="requirements" class="anchor" href="#requirements" aria-hidden="true"><span class="octicon octicon-link"></span></a>Requirements</h5>
+
+<p>Services:</p>
+
+<ul>
+<li>Apache</li>
+<li>LigHTTPD</li>
+</ul>
+
+<p>Interpreters:</p>
+
+<ul>
+<li>PHP5</li>
+</ul>
+
+<p>Databases:</p>
+
+<ul>
+<li>MySQL</li>
+<li>Postgres (Experimental)</li>
+<li>SQLite (Experimental)</li>
+</ul>
+
+<h5>
+<a id="main-goals" class="anchor" href="#main-goals" aria-hidden="true"><span class="octicon octicon-link"></span></a>Main Goals</h5>
+
+<ul>
+<li>Maintain a solid system of which website development and graphic design can take place.  The issue in this scenario is that the system is meant to be universal, so the intial installation must be very basic but still have all necessary components for expansion within the main administration panel.  This will be an interesting hurdle to jump over, but it will be important in maintain a solid, universal product for many generations to come.</li>
+<li>Maintain several different "gateways" that will provide different types of functionality for various domains, subdomains, and virtual subdirectories.</li>
+</ul>
+
+<h5>
+<a id="demonstration" class="anchor" href="#demonstration" aria-hidden="true"><span class="octicon octicon-link"></span></a>Demonstration</h5>
+
+<p>Website: <a href="http://demo.getvexis.com/">http://demo.getvexis.com/</a><br>
+Admin Panel: <a href="http://admin.demo.getvexis.com/">http://admin.demo.getvexis.com/</a></p>
+
+<h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<h5>
+<a id="overview-1" class="anchor" href="#overview-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Overview</h5>
+
+<p>This is a simple process and will remain as such if instructions are followed carefully.</p>
+
+<h5>
+<a id="configuration" class="anchor" href="#configuration" aria-hidden="true"><span class="octicon octicon-link"></span></a>Configuration</h5>
+
+<p>Copy the config.sample.php file to config.php, open the file (which is fairly straight forward), and replace the sample data with the data from your server.</p>
+
+<h5>
+<a id="database" class="anchor" href="#database" aria-hidden="true"><span class="octicon octicon-link"></span></a>Database</h5>
+
+<p>Import the SQL file from the install folder directly into phpMyAdmin or using a shell prompt.  The shell prompt should look like this:</p>
+
+<div class="highlight highlight-sh"><pre>mysql -u root -p[root_password]
+
+mysql<span class="pl-k">&gt;</span> create database [database_name]<span class="pl-k">;</span>
+Query OK, 1 row affected (0.02 sec)
+
+mysql -u root -p[root_password] [database_name] <span class="pl-k">&lt;</span> database.sql</pre></div>
+
+<p>If this was done correctly you should be able to have a nice output from your website.  You should then visit the "Settings" table and change the various settings specifically for your domain and server information to avoid future issues when logging in for the first time.</p>
+
+<p><strong>Note</strong>: This installation process will soon be completely done from an installation file.</p>
+
+<h5>
+<a id="finalizing" class="anchor" href="#finalizing" aria-hidden="true"><span class="octicon octicon-link"></span></a>Finalizing</h5>
+
+<p>Since everything should be smoothly configured, delete the install folder.  This will keep your system from having your settings overwritten which is a large security vulnerability.</p>
+
+<h2>
+<a id="system-roles" class="anchor" href="#system-roles" aria-hidden="true"><span class="octicon octicon-link"></span></a>System Roles</h2>
+
+<h5>
+<a id="overview-2" class="anchor" href="#overview-2" aria-hidden="true"><span class="octicon octicon-link"></span></a>Overview</h5>
+
+<p>The roles that follow are separated within a directory specific to its name.  Within these directories, each role will have its format and place in the order of the system as it runs.  The role will dictate where a particular feature will need to go and from there we can maintain quite a vast sense of universal ability.</p>
+
+<h5>
+<a id="extensions" class="anchor" href="#extensions" aria-hidden="true"><span class="octicon octicon-link"></span></a>Extensions</h5>
+
+<p>Extensions will involve a top level action enabled across the board for all pages.</p>
+
+<div class="highlight highlight-php"><pre><span class="pl-s1"><span class="pl-c">//Sample Format</span></span>
+<span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-c">//object oriented class style information here</span></span>
+<span class="pl-s1"><span class="pl-c1">echo</span> <span class="pl-s"><span class="pl-pds">"</span>Hello World!<span class="pl-pds">"</span></span>;</span></pre></div>
+
+<h5>
+<a id="gateways" class="anchor" href="#gateways" aria-hidden="true"><span class="octicon octicon-link"></span></a>Gateways</h5>
+
+<p>Only one gateway can run and is set by the children block in the database.</p>
+
+<ul>
+<li>ACP - Admin Control Panel*</li>
+<li>API - Application Programming Interface</li>
+<li>CMS - Content Management System</li>
+<li>CDN - Content Delivery Network</li>
+</ul>
+
+<p>*This needs to be able to be accessed regardless of the ability of the website to run, after changes have been made.  This should also include some sort of hardcoded recovery admin to help through that process in the case that major issues arise.</p>
+
+<h5>
+<a id="includes" class="anchor" href="#includes" aria-hidden="true"><span class="octicon octicon-link"></span></a>Includes</h5>
+
+<p>These are files that contain the initial hooks, like configuration and globals.</p>
+
+<h5>
+<a id="libraries" class="anchor" href="#libraries" aria-hidden="true"><span class="octicon octicon-link"></span></a>Libraries</h5>
+
+<p>These are files that are available throughout the system at any time.  They work in an object oriented method and contribute in common and general ways (i.e. database interfacing, markup languages, etc).  These files are extremely flexible and should be edited on a common basis.</p>
+
+<p>Note: The loading of these files is going to be more nested in the coming versions.  We will be loading data in namespaces, and this will go into various types of a hierarchy, similar to that of the widely known SplClassLoader.php file.</p>
+
+<h5>
+<a id="modules" class="anchor" href="#modules" aria-hidden="true"><span class="octicon octicon-link"></span></a>Modules</h5>
+
+<p>These are files that are only executed by a particular gateway and are held in a folder specific to that gateway.  These files are specific to a particular page that calls them, can only run once, can only have one injection and do not run across the entire system.  These are meant for extremely specific tweaks.</p>
+
+<h5>
+<a id="plugins" class="anchor" href="#plugins" aria-hidden="true"><span class="octicon octicon-link"></span></a>Plugins</h5>
+
+<p>Plugins will involve a bottom level action enabled particularly within pages that call for them, which can involve multiple injections.</p>
+
+<div class="highlight highlight-php"><pre><span class="pl-s1"><span class="pl-c">//Sample Format</span></span>
+<span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-c">//object oriented class style information here</span></span>
+<span class="pl-s1"><span class="pl-c1">echo</span> <span class="pl-s"><span class="pl-pds">"</span>Hello World!<span class="pl-pds">"</span></span>;</span></pre></div>
+
+<h5>
+<a id="indexphp" class="anchor" href="#indexphp" aria-hidden="true"><span class="octicon octicon-link"></span></a>Index.php</h5>
+
+<p>This file is meant to be the "traffic cop" of the system.  It is the only file that is ever truly executed and it builds all data in a particular order.  It is very flexible and should be edited on a rare basis.</p>
+
+<h2>
+<a id="credits" class="anchor" href="#credits" aria-hidden="true"><span class="octicon octicon-link"></span></a>Credits</h2>
+
+<p>This project has always been built by only one programmer, Alex Gurrola.  One day he hopes this system will no longer require his influence to progress without feature creep.</p>
+        </section>
+
+        <aside id="sidebar">
+          <a href="https://github.com/versidyne/vexis-native/zipball/master" class="button">
+            <small>Download</small>
+            .zip file
+          </a>
+          <a href="https://github.com/versidyne/vexis-native/tarball/master" class="button">
+            <small>Download</small>
+            .tar.gz file
+          </a>
+
+          <p class="repo-owner"><a href="https://github.com/versidyne/vexis-native"></a> is maintained by <a href="https://github.com/versidyne">versidyne</a>.</p>
+
+          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
+        </aside>
+      </div>
+    </div>
+
+  
+  </body>
+</html>
